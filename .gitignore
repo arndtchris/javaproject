@@ -6,3 +6,5 @@ banque_gr3.iml
 src/.gitignore
 src/README.md
 META-INF/*
+.idea/
+out/
