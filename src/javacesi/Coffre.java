@@ -12,6 +12,7 @@ public class Coffre implements ICrud
     private ClientBanque client;
     private double montant;
     private List<Operation> operations = new ArrayList<Operation>();
+    private boolean coffreParDefault;
 
 
     //constructeurs
@@ -68,6 +69,11 @@ public class Coffre implements ICrud
         return this.operations;
     }
 
+    public boolean isCoffreParDefault()
+    {
+        return  this.coffreParDefault;
+    }
+
     //setter
 
     public void setId(int identifiant)
@@ -103,6 +109,11 @@ public class Coffre implements ICrud
     public void setOperation(Operation ope)
     {
         this.operations.add(ope);
+    }
+
+    public void setCoffreParDefaut()
+    {
+        this.coffreParDefault = true;
     }
 
     //Methodes
@@ -159,4 +170,5 @@ public class Coffre implements ICrud
     public void Delete(int id) {
 
     }
+
 }
