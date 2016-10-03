@@ -13,6 +13,12 @@ public class Coffre implements ICrud
     private double montant;
     private List<Operation> operations = new ArrayList<Operation>();
     private boolean coffreParDefault;
+    protected Double decouvert;
+    protected Double plafond;
+    protected Double interet;
+    protected Double maxRetrait;
+    protected Double maxDepot;
+    protected boolean peutFaireVirement;
 
 
     //constructeurs
@@ -72,6 +78,36 @@ public class Coffre implements ICrud
     public boolean isCoffreParDefault()
     {
         return  this.coffreParDefault;
+    }
+
+    public boolean peutFaireVirement()
+    {
+        return this.peutFaireVirement;
+    }
+
+    public double decouvertAutorise()
+    {
+        return this.decouvert;
+    }
+
+    public double getPlafond()
+    {
+        return this.plafond;
+    }
+
+    public double getInteret()
+    {
+        return this.interet;
+    }
+
+    public double getMaxRetrait()
+    {
+        return this.maxRetrait;
+    }
+
+    public double getMaxDepot()
+    {
+        return this.maxDepot;
     }
 
     //setter
