@@ -1,0 +1,8 @@
+.idea/*
+out/*
+test/*
+*.class
+banque_gr3.iml
+src/.gitignore
+src/README.md
+META-INF/*
