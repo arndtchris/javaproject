@@ -2,13 +2,14 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class Banque
+public class Banque extends Etablissement
 {
     private String designation;
     private ArrayList<Secteur> listeSecteur;
 
     public Banque()
     {
+        super();
         listeSecteur = new ArrayList<Secteur>();
     }
 
