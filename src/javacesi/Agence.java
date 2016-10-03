@@ -2,7 +2,7 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class Agence extends Etablissement
+public class Agence extends Etablissement implements ICrud
 {
 
     private ArrayList<Coffre> listeCoffre;
@@ -55,4 +55,23 @@ public class Agence extends Etablissement
         listeClient.add(c);
     }
 
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
+    }
 }

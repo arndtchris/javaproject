@@ -4,7 +4,8 @@ package javacesi;
  * Created by Emna, Julien & Paul on 14/09/2016.
  **/
 
-public class ClientBanque {
+public class ClientBanque implements ICrud
+{
 	
 	private int id;
 	private String nom;
@@ -73,5 +74,24 @@ public class ClientBanque {
     {
 		return this.prenom + " " + this.nom;
     }
-    
+
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
+    }
 }

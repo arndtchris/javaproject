@@ -2,7 +2,7 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class Secteur
+public class Secteur implements ICrud
 {
     private String ville;
     private int codePostal;
@@ -70,4 +70,23 @@ public class Secteur
             return listeAgence.get(i);
     }
 
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
+    }
 }

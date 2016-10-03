@@ -8,7 +8,8 @@ import java.util.Date;
  * @author etienne
  *
  */
-public class Frais {
+public class Frais implements ICrud
+{
 
 	private Integer IdFrais;
 	private Date DateAnnee;
@@ -57,4 +58,23 @@ public class Frais {
 		return Description;
 	}
 
+	@Override
+	public void Create(int id) {
+
+	}
+
+	@Override
+	public <T> void Read(T object) {
+
+	}
+
+	@Override
+	public <T> void Update(T object) {
+
+	}
+
+	@Override
+	public void Delete(int id) {
+
+	}
 }

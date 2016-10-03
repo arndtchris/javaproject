@@ -2,7 +2,8 @@ package javacesi;
 import java.util.Date;
 
 
-public class Operation {
+public class Operation implements ICrud
+{
 
     // Variables //
     private Date debut;
@@ -61,4 +62,23 @@ public class Operation {
         this.frs = frs;
     }
 
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
+    }
 }

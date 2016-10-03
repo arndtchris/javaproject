@@ -7,7 +7,8 @@ import java.util.List;
 /**
  * Created by Mickaël Cimbaluria on 03/10/2016.
  */
-public class Etablissement {
+public class Etablissement implements ICrud
+{
 
     private int idEtab;
     private String nomEtab;
@@ -34,6 +35,26 @@ public class Etablissement {
     public String getNom(){return this.nomEtab;};
     public List<ClientBanque> getListClient(){return this.clients;};
     public String getAdresse(){return this.adresseEtab;};
+
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
+    }
 
 }
 

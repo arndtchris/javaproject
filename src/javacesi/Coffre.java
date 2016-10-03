@@ -3,7 +3,7 @@ package javacesi;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Coffre
+public class Coffre implements ICrud
 {
     private int id;
     private String localisation;
@@ -138,5 +138,25 @@ public class Coffre
         {
             System.out.println("Appartient à "+ this.client.getPrenom() + " " + this.client.getNom());
         }
+    }
+
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
     }
 }

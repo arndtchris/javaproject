@@ -2,7 +2,7 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class GroupementBanque
+public class GroupementBanque implements ICrud
 {
     private ArrayList<Banque> listeBanque;
     private String designation;
@@ -44,5 +44,25 @@ public class GroupementBanque
     public ArrayList<Banque> GetListeBanque()
     {
         return listeBanque;
+    }
+
+    @Override
+    public void Create(int id) {
+
+    }
+
+    @Override
+    public <T> void Read(T object) {
+
+    }
+
+    @Override
+    public <T> void Update(T object) {
+
+    }
+
+    @Override
+    public void Delete(int id) {
+
     }
 }
