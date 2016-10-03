@@ -1,5 +1,6 @@
 package javacesi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.in;
@@ -8,15 +9,24 @@ import static java.lang.System.in;
  * Created by Emna, Julien & Paul on 14/09/2016.
  **/
 
-public class ClientBanque implements ICrud, extends Individu
+public class ClientBanque extends Individu implements ICrud
 {
 
-	private List<Coffre> coffres;
+	private ArrayList<Coffre> coffres;
 	
 	// Constructeurs
 	public ClientBanque(int id, String nm, String pn, Agence agr) {
 		super(id,nm,pn,agr);
 	}
+
+    public ClientBanque(int id, String nm, String pn, Agence agr, Coffre cfr) {
+        coffres =new ArrayList<Coffre>();
+        this.setId(id);
+        this.setNom(nm);
+        this.setPrenom(pn);
+        this.setAgenceRattachement(agr);
+        this.coffres.add(cfr);
+    }
 	
 	public ClientBanque() {
         super();

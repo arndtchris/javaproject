@@ -128,6 +128,8 @@ public class Donnees {
 		
 		// Création d'une liste de coffres
 		// Création d'une liste de clients
+
+		//(int id, String nm, String pn, Agence agr)
 		ClientBanque cl1 = new ClientBanque(1,"Schmit","Aurélien",a1,cf1);
 		ClientBanque cl2 = new ClientBanque(2,"Castro","Fidel",a2,cf2);
 		ClientBanque cl3 = new ClientBanque(3,"Trump","Donald",a5,cf4);
