@@ -21,17 +21,17 @@ public class Banquier extends Individu implements ICrud{
 
 
     @Override
-    public void Create(int id) {
+    public void Create() {
 
     }
 
     @Override
-    public <T> void Read(T object) throws AlsCustomException {
+    public void Read() throws AlsCustomException {
 
     }
 
     @Override
-    public <T> void Update(T object) throws AlsCustomException {
+    public void Update() throws AlsCustomException {
 
     }
 

@@ -188,12 +188,12 @@ public class Coffre implements ICrud
     }
 
     @Override
-    public void Create(int id) {
+    public void Create() {
 
     }
 
     @Override
-    public <T> void Read(T object) throws AlsCustomException {
+    public void Read() throws AlsCustomException {
         if (id == 0)
         {
             // throw our custom exception
@@ -206,8 +206,8 @@ public class Coffre implements ICrud
     }
 
     @Override
-    public <T> void Update(T object) throws AlsCustomException {
-        if (id == 0)
+    public void Update() throws AlsCustomException {
+        if (this.id == 0)
         {
             // throw our custom exception
             throw new AlsCustomException("L'élément n'existe pas");

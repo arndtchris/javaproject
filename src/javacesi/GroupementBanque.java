@@ -47,17 +47,17 @@ public class GroupementBanque implements ICrud
     }
 
     @Override
-    public void Create(int id) {
+    public void Create() {
 
     }
 
     @Override
-    public <T> void Read(T object) {
+    public void Read() {
 
     }
 
     @Override
-    public <T> void Update(T object) {
+    public void Update() {
 
     }
 
