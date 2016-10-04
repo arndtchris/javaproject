@@ -193,18 +193,42 @@ public class Coffre implements ICrud
     }
 
     @Override
-    public <T> void Read(T object) {
-
+    public <T> void Read(T object) throws AlsCustomException {
+        if (id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'élément n'existe pas");
+        }
+        else
+        {
+            this.afficheCoffre();
+        }
     }
 
     @Override
-    public <T> void Update(T object) {
-
+    public <T> void Update(T object) throws AlsCustomException {
+        if (id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'élément n'existe pas");
+        }
+        else
+        {
+            System.out.println("coffre modifié");
+        }
     }
 
     @Override
-    public void Delete(int id) {
-
+    public void Delete(int id) throws AlsCustomException {
+        if (id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'élément n'existe pas");
+        }
+        else
+        {
+            System.out.println("coffre supprimé");
+        }
     }
 
 }

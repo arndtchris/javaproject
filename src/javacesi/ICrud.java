@@ -6,7 +6,7 @@ package javacesi;
 public interface ICrud {
 
     void Create(int id);
-    <T> void Read(T object);
-    <T> void Update(T object);
-    void Delete(int id);
+    <T> void Read(T object) throws AlsCustomException;
+    <T> void Update(T object) throws AlsCustomException;
+    void Delete(int id) throws AlsCustomException;
 }
