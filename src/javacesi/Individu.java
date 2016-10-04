@@ -8,6 +8,7 @@ public class Individu implements ICrud {
     private int id;
     private String nom;
     private String prenom;
+    private String adresse;
     private Agence agenceRattachement;
 
     public Individu()
@@ -43,6 +44,11 @@ public class Individu implements ICrud {
         return this.agenceRattachement;
     }
 
+    public String getAdresse()
+    {
+        return this.adresse;
+    }
+
 
     public void setId(int id)
     {
@@ -63,6 +69,12 @@ public class Individu implements ICrud {
     {
         this.agenceRattachement = agr;
     }
+
+    public void setAdresse(String adresse)
+    {
+        this.adresse = adresse;
+    }
+
 
     @Override
     public void Create() {
