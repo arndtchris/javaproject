@@ -1,0 +1,5 @@
+Coffre-fort;jour;15;euros
+Armoire forte;quinzaine;150;euros
+
+Lingot;mois;100;euros
+Tableaux;jour;50;euros
