@@ -19,6 +19,7 @@ public class Coffre implements ICrud
     protected Double maxRetrait;
     protected Double maxDepot;
     protected boolean peutFaireVirement;
+    protected String objets;
 
 
     //constructeurs
@@ -110,6 +111,11 @@ public class Coffre implements ICrud
         return this.maxDepot;
     }
 
+    public String getObjets()
+    {
+        return this.objets;
+    }
+
     //setter
 
     public void setId(int identifiant)
@@ -150,6 +156,11 @@ public class Coffre implements ICrud
     public void setCoffreParDefaut()
     {
         this.coffreParDefault = true;
+    }
+
+    public void setObjets(String objets)
+    {
+        this.objets = objets;
     }
 
     //Methodes
