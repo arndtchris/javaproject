@@ -78,7 +78,7 @@ public class Operation implements ICrud
     }
 
     @Override
-    public void Delete(int id) {
+    public void Delete() {
 
     }
 }

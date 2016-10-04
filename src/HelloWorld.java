@@ -1,3 +1,4 @@
+import javacesi.AlsCustomException;
 import javacesi.Coffre;
 import javacesi.Donnees;
 
@@ -6,8 +7,7 @@ import javacesi.Donnees;
  */
 public class HelloWorld {
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) throws AlsCustomException {
         Donnees db = new Donnees();
 
         System.out.println("--- Banque en ligne ---");
@@ -18,5 +18,10 @@ public class HelloWorld {
             coffre.afficheOperations();
             System.out.println();
         }
+
+        Coffre example = db.tousLesCoffres.get(0);
+        example.setId(0);
+        example.Delete();
+
     }
 }

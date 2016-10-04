@@ -56,7 +56,7 @@ public class Etablissement implements ICrud
     }
 
     @Override
-    public void Delete(int id) {
+    public void Delete() {
 
     }
 

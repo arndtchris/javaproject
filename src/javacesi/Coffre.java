@@ -219,8 +219,8 @@ public class Coffre implements ICrud
     }
 
     @Override
-    public void Delete(int id) throws AlsCustomException {
-        if (id == 0)
+    public void Delete() throws AlsCustomException {
+        if (this.id == 0)
         {
             // throw our custom exception
             throw new AlsCustomException("L'élément n'existe pas");

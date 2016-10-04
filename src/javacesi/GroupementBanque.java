@@ -62,7 +62,7 @@ public class GroupementBanque implements ICrud
     }
 
     @Override
-    public void Delete(int id) {
+    public void Delete() {
 
     }
 }

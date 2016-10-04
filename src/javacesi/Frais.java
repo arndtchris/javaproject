@@ -74,7 +74,7 @@ public class Frais implements ICrud
 	}
 
 	@Override
-	public void Delete(int id) {
+	public void Delete() {
 
 	}
 }

@@ -71,7 +71,7 @@ public class Agence extends Etablissement implements ICrud
     }
 
     @Override
-    public void Delete(int id) {
+    public void Delete() {
 
     }
 }
