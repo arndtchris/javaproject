@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Secteur implements ICrud
 {
+    private int id;
     private String ville;
     private int codePostal;
     private String pays;
@@ -20,6 +21,16 @@ public class Secteur implements ICrud
         this.codePostal = codePostal;
         this.pays = pays;
         listeAgence = new ArrayList<Agence>();
+    }
+
+    public void SetId(int id)
+    {
+        this.id = id;
+    }
+
+    public int GetId()
+    {
+        return this.id;
     }
 
     public void SetVille(String ville)
@@ -76,17 +87,41 @@ public class Secteur implements ICrud
     }
 
     @Override
-    public void Read() {
-
+    public void Read() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("Le secteur n'existe pas");
+        }
+        else
+        {
+            System.out.println("Je décris le secteur");
+        }
     }
 
     @Override
-    public void Update() {
-
+    public void Update() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("Le secteur n'existe pas");
+        }
+        else
+        {
+            System.out.println("Secteur modifié");
+        }
     }
 
     @Override
-    public void Delete() {
-
+    public void Delete() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("Le secteur n'existe pas");
+        }
+        else
+        {
+            System.out.println("Secteur supprimé");
+        }
     }
 }

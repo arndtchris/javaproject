@@ -64,17 +64,41 @@ public class Frais implements ICrud
 	}
 
 	@Override
-	public void Read() {
-
+	public void Read() throws AlsCustomException {
+		if (this.IdFrais == 0)
+		{
+			// throw our custom exception
+			throw new AlsCustomException("Ce frais n'existe pas");
+		}
+		else
+		{
+			System.out.println("Je décris le frais");
+		}
 	}
 
 	@Override
-	public void Update() {
-
+	public void Update() throws AlsCustomException {
+		if (this.IdFrais == 0)
+		{
+			// throw our custom exception
+			throw new AlsCustomException("Ce frais n'existe pas");
+		}
+		else
+		{
+			System.out.println("Frais modifié");
+		}
 	}
 
 	@Override
-	public void Delete() {
-
+	public void Delete() throws AlsCustomException {
+		if (this.IdFrais == 0)
+		{
+			// throw our custom exception
+			throw new AlsCustomException("Ce frais n'existe pas");
+		}
+		else
+		{
+			System.out.println("Frais supprimé");
+		}
 	}
 }

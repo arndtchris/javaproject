@@ -46,18 +46,42 @@ public class Etablissement implements ICrud
     }
 
     @Override
-    public void Read() {
-
+    public void Read() throws AlsCustomException {
+        if (this.idEtab == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'établissement n'existe pas");
+        }
+        else
+        {
+            System.out.println("je décrit l'établissement");
+        }
     }
 
     @Override
-    public void Update() {
-
+    public void Update() throws AlsCustomException {
+        if (this.idEtab == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'établissement n'existe pas");
+        }
+        else
+        {
+            System.out.println("Établissement modifié");
+        }
     }
 
     @Override
-    public void Delete() {
-
+    public void Delete() throws AlsCustomException {
+        if (this.idEtab == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'établissement n'existe pas");
+        }
+        else
+        {
+            System.out.println("Établissement supprimé");
+        }
     }
 
 }

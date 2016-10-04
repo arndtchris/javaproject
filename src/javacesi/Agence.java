@@ -2,7 +2,7 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class Agence extends Etablissement implements ICrud
+public class Agence extends Etablissement
 {
 
     private ArrayList<Coffre> listeCoffre;
@@ -53,25 +53,5 @@ public class Agence extends Etablissement implements ICrud
     public void AddClient(ClientBanque c)
     {
         listeClient.add(c);
-    }
-
-    @Override
-    public void Create() {
-
-    }
-
-    @Override
-    public void Read() {
-
-    }
-
-    @Override
-    public void Update() {
-
-    }
-
-    @Override
-    public void Delete() {
-
     }
 }

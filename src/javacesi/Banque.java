@@ -2,7 +2,7 @@ package javacesi;
 
 import java.util.ArrayList;
 
-public class Banque extends Etablissement implements ICrud
+public class Banque extends Etablissement
 {
     private String designation;
     private ArrayList<Secteur> listeSecteur;
@@ -37,25 +37,5 @@ public class Banque extends Etablissement implements ICrud
     public ArrayList<Secteur> GetListeSecteur()
     {
         return listeSecteur;
-    }
-
-    @Override
-    public void Create() {
-
-    }
-
-    @Override
-    public void Read() {
-
-    }
-
-    @Override
-    public void Update() {
-
-    }
-
-    @Override
-    public void Delete() {
-
     }
 }

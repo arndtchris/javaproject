@@ -9,7 +9,7 @@ import static java.lang.System.in;
  * Created by Emna, Julien & Paul on 14/09/2016.
  **/
 
-public class ClientBanque extends Individu implements ICrud
+public class ClientBanque extends Individu
 {
 
 	private ArrayList<Coffre> coffres;
@@ -20,7 +20,7 @@ public class ClientBanque extends Individu implements ICrud
 	}
 
     public ClientBanque(int id, String nm, String pn, Agence agr, Coffre cfr) {
-        coffres =new ArrayList<Coffre>();
+        coffres = new ArrayList<Coffre>();
         this.setId(id);
         this.setNom(nm);
         this.setPrenom(pn);
@@ -61,25 +61,5 @@ public class ClientBanque extends Individu implements ICrud
     public String toString() 
     {
 		return this.getPrenom() + " " + this.getNom();
-    }
-
-    @Override
-    public void Create() {
-
-    }
-
-    @Override
-    public void Read() {
-
-    }
-
-    @Override
-    public void Update() {
-
-    }
-
-    @Override
-    public void Delete() {
-
     }
 }

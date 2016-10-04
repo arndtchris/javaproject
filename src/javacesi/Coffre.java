@@ -194,10 +194,10 @@ public class Coffre implements ICrud
 
     @Override
     public void Read() throws AlsCustomException {
-        if (id == 0)
+        if (this.id == 0)
         {
             // throw our custom exception
-            throw new AlsCustomException("L'élément n'existe pas");
+            throw new AlsCustomException("Le coffre n'existe pas");
         }
         else
         {
@@ -210,11 +210,11 @@ public class Coffre implements ICrud
         if (this.id == 0)
         {
             // throw our custom exception
-            throw new AlsCustomException("L'élément n'existe pas");
+            throw new AlsCustomException("Le coffre n'existe pas");
         }
         else
         {
-            System.out.println("coffre modifié");
+            System.out.println("Le coffre a été modifié");
         }
     }
 
@@ -223,11 +223,11 @@ public class Coffre implements ICrud
         if (this.id == 0)
         {
             // throw our custom exception
-            throw new AlsCustomException("L'élément n'existe pas");
+            throw new AlsCustomException("Le coffre n'existe pas");
         }
         else
         {
-            System.out.println("coffre supprimé");
+            System.out.println("le coffre a été supprimé");
         }
     }
 

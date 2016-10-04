@@ -6,6 +6,7 @@ public class Operation implements ICrud
 {
 
     // Variables //
+    private int id;
     private Date debut;
     private Date fin;
     private String typeOp;
@@ -17,7 +18,8 @@ public class Operation implements ICrud
     // Constructors //
 
     public Operation(){}
-    public Operation(Date d, Date f, String t){
+    public Operation(int id, Date d, Date f, String t){
+        this.id = id;
         this.debut = d;
         this.fin = f;
         this.typeOp = t;
@@ -25,6 +27,12 @@ public class Operation implements ICrud
 
     // Getter / Setter //
 
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public Date getDebut() {
         return debut;
     }
@@ -68,17 +76,41 @@ public class Operation implements ICrud
     }
 
     @Override
-    public void Read() {
-
+    public void Read() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'opération n'existe pas");
+        }
+        else
+        {
+            System.out.println("Je décris l'opération");
+        }
     }
 
     @Override
-    public void Update() {
-
+    public void Update() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'opération n'existe pas");
+        }
+        else
+        {
+            System.out.println("Opération modifiée");
+        }
     }
 
     @Override
-    public void Delete() {
-
+    public void Delete() throws AlsCustomException {
+        if (this.id == 0)
+        {
+            // throw our custom exception
+            throw new AlsCustomException("L'opération n'existe pas");
+        }
+        else
+        {
+            System.out.println("Opération supprimée");
+        }
     }
 }
