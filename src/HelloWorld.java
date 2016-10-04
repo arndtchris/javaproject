@@ -1,6 +1,7 @@
 import javacesi.AlsCustomException;
 import javacesi.Coffre;
 import javacesi.Donnees;
+import javacesi.ParseChris;
 
 /**
  * Created by Amanite on 14/09/2016.
@@ -8,7 +9,7 @@ import javacesi.Donnees;
 public class HelloWorld {
 
     public static void main(String args[]) throws AlsCustomException {
-        Donnees db = new Donnees();
+        /*Donnees db = new Donnees();
 
         System.out.println("--- Banque en ligne ---");
 
@@ -21,7 +22,9 @@ public class HelloWorld {
 
         Coffre example = db.tousLesCoffres.get(0);
         example.setId(0);
-        example.Delete();
+        example.Delete();*/
+
+        new ParseChris();
 
     }
 }
