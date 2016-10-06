@@ -1,6 +1,7 @@
 package javacesi;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.lang.reflect.Array;
@@ -15,6 +16,7 @@ import java.util.List;
 public class AgenceXML {
     @XmlElement(name = "Adresse")
     public String Adresse;
-    @XmlElement(name = "listeClient")
-    List<ClientBanqueXML> listeClient;
+    @XmlElementWrapper(name = "listeClient")
+    @XmlElement(name = "ClientBanqueXML")
+    public List<ClientBanqueXML> listeClient;
 }
