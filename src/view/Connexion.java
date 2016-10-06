@@ -1,11 +1,16 @@
 package view;
 
+import javacesi.Agence;
+import javacesi.Individu;
+
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.List;
 
 
 /**
@@ -63,16 +68,62 @@ public class Connexion {
         {
             public void actionPerformed(ActionEvent e)
             {
+                //Instanciation de l'agence pour les individus
+                Agence agr = new Agence();
 
-               JFrame j = new JFrame();
-                JPanel pan2 = new JPanel();
-                j.setSize(500, 100);
-                JLabel lab = new JLabel("Bravo !!!! Vous avez cliqué !!!!");
-                pan2.add(lab);
-                lab.setVisible(true);
-                j.setVisible(true);
-                j.setLocationRelativeTo(null);
-                j.setContentPane(pan2);
+                //Instanciation des individus
+                Individu ind1 = new Individu(1, "Cimbaluria", "Mickael", agr);
+                Individu ind2 = new Individu(2, "Arndt", "Chris", agr);;
+                Individu ind3 = new Individu(3, "Wermann", "Laurine", agr);;
+
+                //Création de la liste d'individus
+                ArrayList<Individu> lind = new ArrayList<Individu>();
+                lind.add(ind1);
+                lind.add(ind2);
+                lind.add(ind3);
+                boolean trouve = false;
+
+                for(int i=0; i<lind.size(); i++)
+                {
+                    System.out.println(lind.get(i).getNom().toString());
+                    System.out.println(lind.get(i).getPrenom().toString());
+
+                    if ((nomtxt.getText().toString().equals(lind.get(i).getNom().toString())) && (prenomtxt.getText().toString().equals(lind.get(i).getPrenom().toString())))
+                    {
+                        JFrame j = new JFrame();
+                        JPanel pan2 = new JPanel();
+                        j.setSize(500, 100);
+                        JLabel lab = new JLabel("Bravo !!!! Vous avez cliqué !!!!");
+                        pan2.add(lab);
+                        lab.setVisible(true);
+                        j.setVisible(true);
+                        j.setLocationRelativeTo(null);
+                        j.setContentPane(pan2);
+                        trouve = true;
+                    }
+                    else
+                    {
+                        if ((i == lind.size()-1) || (trouve = false))
+                        {
+                            JFrame j = new JFrame();
+                            JPanel pan3 = new JPanel();
+                            j.setSize(500, 100);
+                            JLabel lab = new JLabel("Votre mot de passe est erroné, merci de le ressaisir");
+                            pan3.add(lab);
+                            lab.setVisible(true);
+                            j.setVisible(true);
+                            j.setLocationRelativeTo(null);
+                            j.setContentPane(pan3);
+                        }
+                    }
+                }
+            }
+        });
+
+        annuler.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                fenetre.dispose();
             }
         });
         //Nous demandons maintenant à notre objet de se positionner au centre
