@@ -1,9 +1,4 @@
-import javacesi.AlsCustomException;
-import javacesi.Coffre;
-import javacesi.Donnees;
-import javacesi.ParseChris;
-
-import java.io.Console;
+import javacesi.Parse;
 
 /**
  * Created by Amanite on 14/09/2016.
@@ -26,7 +21,7 @@ public class HelloWorld {
         example.setId(0);
         example.Delete();*/
 
-        new ParseChris();
+        new Parse();
 
         /*Console console = System.console();
 
