@@ -1,0 +1,5 @@
+<TypeCoffre>Coffre-fort</TypeCoffre><PeriodeLocation>jour</PeriodeLocation><PrixPeriode>15</PrixPeriode><Devise>euros</Devise>
+<TypeCoffre>Armoire forte</TypeCoffre><PeriodeLocation>quinzaine</PeriodeLocation><PrixPeriode>150</PrixPeriode><Devise>euros</Devise>
+
+<TypeCoffre>Lingot</TypeCoffre><PeriodeLocation>mois</PeriodeLocation><PrixPeriode>100</PrixPeriode><Devise>euros</Devise>
+<TypeCoffre>Tableaux</TypeCoffre><PeriodeLocation>jour</PeriodeLocation><PrixPeriode>50</PrixPeriode><Devise>euros</Devise>
