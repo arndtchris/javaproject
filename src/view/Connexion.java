@@ -31,16 +31,26 @@ public class Connexion {
         pan.setLayout(gl);
 
         //On créé le label de bienvenue
-        JLabel titre = new JLabel("Bienvenue, veuillez vous identifier svp");
+        JLabel titre = new JLabel("Bienvenue, veuillez vous identifier svp",JLabel.CENTER);
         pan.add(titre);
 
         //Création des champs Nom et Prénom
+
         //Nom
-        JLabel nom = new JLabel("Nom : ");
+        JLabel nom = new JLabel("Nom : ", JLabel.CENTER);
         JTextField nomtxt = new JTextField();
         pan.add(nom);
         pan.add(nomtxt);
 
+        //Nom
+        JLabel prenom = new JLabel("Prénom : ",JLabel.CENTER);
+        JTextField prenomtxt = new JTextField();
+        pan.add(prenom);
+        pan.add(prenomtxt);
+
+        //Pas beau, mais pour sauter une ligne ...
+        JLabel vide = new JLabel(" ");
+        pan.add(vide);
 
         //Bouton "se connecter" et "annuler"
         JButton connect = new JButton("Se connecter");
