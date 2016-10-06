@@ -1,7 +1,6 @@
 package view;
 
-import javacesi.Agence;
-import javacesi.Individu;
+import javacesi.*;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -18,7 +17,10 @@ import java.util.List;
  */
 public class Connexion {
 
-    public static void main(String[] args){
+    protected ClientBanqueXML clconnecte = new ClientBanqueXML();
+
+    public ClientBanqueXML AuthentifieClient(){
+
 
         JFrame fenetre = new JFrame();
 
@@ -68,27 +70,29 @@ public class Connexion {
         {
             public void actionPerformed(ActionEvent e)
             {
+
                 //Instanciation de l'agence pour les individus
                 Agence agr = new Agence();
 
                 //Instanciation des individus
-                Individu ind1 = new Individu(1, "Cimbaluria", "Mickael", agr);
-                Individu ind2 = new Individu(2, "Arndt", "Chris", agr);;
-                Individu ind3 = new Individu(3, "Wermann", "Laurine", agr);;
+                ArrayList<ClientBanqueXML> clxml = new ArrayList<ClientBanqueXML>();
+                ArrayList<AgenceXML> agxml = new Parse().parseAgence();
+                for(int j=0; j<agxml.size(); j++)
+                {
+                    if ((agxml.get(j).listeClient != null) && (agxml.get(j).listeClient.size() > 0))
+                    {
+                    clxml.addAll(agxml.get(j).listeClient);
+                    }
+                }
 
-                //Création de la liste d'individus
-                ArrayList<Individu> lind = new ArrayList<Individu>();
-                lind.add(ind1);
-                lind.add(ind2);
-                lind.add(ind3);
                 boolean trouve = false;
 
-                for(int i=0; i<lind.size(); i++)
+                for(int i=0; i<clxml.size(); i++)
                 {
-                    System.out.println(lind.get(i).getNom().toString());
-                    System.out.println(lind.get(i).getPrenom().toString());
+                    //System.out.println(clxml.get(i).nom.toString());
+                    //System.out.println(clxml.get(i).prenom.toString());
 
-                    if ((nomtxt.getText().toString().equals(lind.get(i).getNom().toString())) && (prenomtxt.getText().toString().equals(lind.get(i).getPrenom().toString())))
+                    if ((nomtxt.getText().toString().equals(clxml.get(i).nom.toString())) && (prenomtxt.getText().toString().equals(clxml.get(i).prenom.toString())))
                     {
                         JFrame j = new JFrame();
                         JPanel pan2 = new JPanel();
@@ -100,10 +104,12 @@ public class Connexion {
                         j.setLocationRelativeTo(null);
                         j.setContentPane(pan2);
                         trouve = true;
+
+                        clconnecte = clxml.get(i);
                     }
                     else
                     {
-                        if ((i == lind.size()-1) || (trouve = false))
+                        if ((i == clxml.size()-1) || (trouve = false))
                         {
                             JFrame j = new JFrame();
                             JPanel pan3 = new JPanel();
@@ -134,5 +140,11 @@ public class Connexion {
         fenetre.setContentPane(pan);
         pan.setBackground(Color.gray);
         fenetre.setVisible(true);
+        return clconnecte;
+    }
+
+    public Connexion()
+    {
+
     }
 }
