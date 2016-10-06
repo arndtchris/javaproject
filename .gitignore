@@ -1,13 +1,6 @@
 .idea/*
 out/*
-test/*
-*.class
-banque_gr3.iml
-src/.gitignore
-src/README.md
-META-INF/*
-.idea/
-out/
+.idea/*
 assets/lesOperations.xml
 assets/Operation0.xml
 assets/Operation1.xml
