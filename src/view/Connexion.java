@@ -1,4 +1,4 @@
-package javacesi;
+package view;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
