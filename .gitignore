@@ -8,3 +8,8 @@ src/README.md
 META-INF/*
 .idea/
 out/
+assets/lesOperations.xml
+assets/Operation0.xml
+assets/Operation1.xml
+assets/Operation2.xml
+assets/Operation3.xml

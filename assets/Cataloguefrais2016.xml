@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+<OperationXML><TypeCoffre>Coffre-fort</TypeCoffre><PeriodeLocation>jour</PeriodeLocation><PrixPeriode>15</PrixPeriode><Devise>euros</Devise></OperationXML>
+<OperationXML><TypeCoffre>Armoire forte</TypeCoffre><PeriodeLocation>quinzaine</PeriodeLocation><PrixPeriode>150</PrixPeriode><Devise>euros</Devise></OperationXML>
+
+<OperationXML><TypeCoffre>Lingot</TypeCoffre><PeriodeLocation>mois</PeriodeLocation><PrixPeriode>100</PrixPeriode><Devise>euros</Devise></OperationXML>
+<OperationXML><TypeCoffre>Tableaux</TypeCoffre><PeriodeLocation>jour</PeriodeLocation><PrixPeriode>50</PrixPeriode><Devise>euros</Devise></OperationXML>
+</xml>
