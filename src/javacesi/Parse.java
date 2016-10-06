@@ -22,6 +22,44 @@ public class Parse {
 
     }
 
+    public ArrayList<AgenceXML> parseAgence()
+    {
+        File file = new File("assets/banque.xml");
+
+        ArrayList<AgenceXML> lesAgences = new ArrayList<>();
+
+        try
+        {
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("AgenceXML");
+
+            JAXBContext jc = JAXBContext.newInstance(AgenceXML.class);
+
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for(int i = 0; i < nodes.getLength(); i++)
+            {
+                JAXBElement<AgenceXML> je = unmarshaller.unmarshal(nodes.item(i), AgenceXML.class);
+                AgenceXML ag = je.getValue();
+                lesAgences.add(ag);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+        return lesAgences;
+    }
+
 
     public ArrayList<OperationXML> parseOperation()
     {

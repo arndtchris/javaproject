@@ -1,4 +1,8 @@
+import javacesi.Agence;
+import javacesi.AgenceXML;
 import javacesi.Parse;
+
+import java.util.ArrayList;
 
 /**
  * Created by Amanite on 14/09/2016.
@@ -21,7 +25,12 @@ public class HelloWorld {
         example.setId(0);
         example.Delete();*/
 
-        new Parse();
+        ArrayList<AgenceXML> agences = new Parse().parseAgence();
+
+        for(int i = 0; i < agences.size(); i++)
+        {
+            System.out.println(agences.get(i).Adresse);
+        }
 
         /*Console console = System.console();
 
