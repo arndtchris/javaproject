@@ -1,11 +1,15 @@
 package view;
 
+import javacesi.*;
+
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.List;
 
 
 /**
@@ -13,7 +17,10 @@ import java.awt.event.ActionListener;
  */
 public class Connexion {
 
-    public static void main(String[] args){
+    protected ClientBanqueXML clconnecte = new ClientBanqueXML();
+
+    public ClientBanqueXML AuthentifieClient(){
+
 
         JFrame fenetre = new JFrame();
 
@@ -64,15 +71,65 @@ public class Connexion {
             public void actionPerformed(ActionEvent e)
             {
 
-               JFrame j = new JFrame();
-                JPanel pan2 = new JPanel();
-                j.setSize(500, 100);
-                JLabel lab = new JLabel("Bravo !!!! Vous avez cliqué !!!!");
-                pan2.add(lab);
-                lab.setVisible(true);
-                j.setVisible(true);
-                j.setLocationRelativeTo(null);
-                j.setContentPane(pan2);
+                //Instanciation de l'agence pour les individus
+                Agence agr = new Agence();
+
+                //Instanciation des individus
+                ArrayList<ClientBanqueXML> clxml = new ArrayList<ClientBanqueXML>();
+                ArrayList<AgenceXML> agxml = new Parse().parseAgence();
+                for(int j=0; j<agxml.size(); j++)
+                {
+                    if ((agxml.get(j).listeClient != null) && (agxml.get(j).listeClient.size() > 0))
+                    {
+                    clxml.addAll(agxml.get(j).listeClient);
+                    }
+                }
+
+                boolean trouve = false;
+
+                for(int i=0; i<clxml.size(); i++)
+                {
+                    //System.out.println(clxml.get(i).nom.toString());
+                    //System.out.println(clxml.get(i).prenom.toString());
+
+                    if ((nomtxt.getText().toString().equals(clxml.get(i).nom.toString())) && (prenomtxt.getText().toString().equals(clxml.get(i).prenom.toString())))
+                    {
+                        JFrame j = new JFrame();
+                        JPanel pan2 = new JPanel();
+                        j.setSize(500, 100);
+                        JLabel lab = new JLabel("Bravo !!!! Vous avez cliqué !!!!");
+                        pan2.add(lab);
+                        lab.setVisible(true);
+                        j.setVisible(true);
+                        j.setLocationRelativeTo(null);
+                        j.setContentPane(pan2);
+                        trouve = true;
+
+                        clconnecte = clxml.get(i);
+                    }
+                    else
+                    {
+                        if ((i == clxml.size()-1) || (trouve = false))
+                        {
+                            JFrame j = new JFrame();
+                            JPanel pan3 = new JPanel();
+                            j.setSize(500, 100);
+                            JLabel lab = new JLabel("Votre mot de passe est erroné, merci de le ressaisir");
+                            pan3.add(lab);
+                            lab.setVisible(true);
+                            j.setVisible(true);
+                            j.setLocationRelativeTo(null);
+                            j.setContentPane(pan3);
+                        }
+                    }
+                }
+            }
+        });
+
+        annuler.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+                fenetre.dispose();
             }
         });
         //Nous demandons maintenant à notre objet de se positionner au centre
@@ -83,5 +140,11 @@ public class Connexion {
         fenetre.setContentPane(pan);
         pan.setBackground(Color.gray);
         fenetre.setVisible(true);
+        return clconnecte;
+    }
+
+    public Connexion()
+    {
+
     }
 }

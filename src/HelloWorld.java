@@ -1,6 +1,8 @@
 import javacesi.Agence;
 import javacesi.AgenceXML;
+import javacesi.ClientBanqueXML;
 import javacesi.Parse;
+import view.Connexion;
 
 import java.util.ArrayList;
 
@@ -24,13 +26,22 @@ public class HelloWorld {
         Coffre example = db.tousLesCoffres.get(0);
         example.setId(0);
         example.Delete();*/
+        ClientBanqueXML clconnecte = new Connexion().AuthentifieClient();
+
+
 
         ArrayList<AgenceXML> agences = new Parse().parseAgence();
 
         for(int i = 0; i < agences.size(); i++)
         {
             System.out.println(agences.get(i).Adresse);
+
+            for(int j = 0; j < agences.size(); j++)
+            {
+                System.out.println(agences.get(i).listeClient.get(j).prenom);
+            }
         }
+
 
         /*Console console = System.console();
 
