@@ -9,28 +9,26 @@ html{
     box-sizing: border-box;
 }
 body{
-    background-color: lightblue;
     height: 100%;
     margin: 0;
-    background-attachment: fixed;
-    background-image: url(../images/bg-image.jpg);
+    background-color: #444444;
     font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif;
+    color: white;
 }
 section{
     width: 1024px;
     margin-right: auto;
     margin-left: auto;
     padding: 20px;
-    box-shadow: dimgrey 0px 0px 5px;
-    background-color: white;
     min-height: 100vh;
 }
 h1{
     font-family: hexa, sans-serif;
     margin: -20px -20px 25px -20px;
     padding: 20px 20px;
-    border-bottom: 1px solid black;
-    color: #12426A;
+    border-bottom: 1px solid white;
+    color: white;
+    box-shadow: darkgrey 0 1px 0px;
 }
 nav{
     background-color: black;
