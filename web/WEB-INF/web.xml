@@ -15,4 +15,14 @@
         <servlet-name>Coffre</servlet-name>
         <url-pattern>/coffre</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <servlet-class>Controllers.LogController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/connexion</url-pattern>
+    </servlet-mapping>
 </web-app>
