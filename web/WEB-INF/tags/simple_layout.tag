@@ -10,9 +10,19 @@
     <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen">
 </head>
 <body>
-    <section>
-        <h1>${title}</h1>
-        <jsp:invoke fragment="body_area"/>
-    </section>
+
+<nav>
+    <ul>
+        <li><a>Test</a></li>
+        <li><a>Essai</a></li>
+    </ul>
+</nav>
+
+<section>
+    <h1>${title}</h1>
+    <jsp:invoke fragment="body_area"/>
+</section>
+
+
 </body>
 </html>
