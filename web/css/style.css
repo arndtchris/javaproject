@@ -1,0 +1,29 @@
+@font-face {
+    font-family: hexa;
+    src: url(../fonts/Hexa.ttf);
+}
+html{
+    height: 100%;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: lightblue;
+    background-image: url(../images/bg.jpg);
+    height: 100%;
+    margin: 0;
+    background-attachment: fixed;
+}
+section{
+    width: 1024px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    box-shadow: dimgrey 0px 0px 5px;
+    background-color: white;
+    min-height: 100vh;
+}
+h1{
+    font-family: hexa, sans-serif;
+}
