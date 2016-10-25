@@ -25,6 +25,8 @@ public class FraisController extends HttpServlet {
 
         ArrayList<OperationXML> lesOperations = new Parse().parseOperation();
 
+        request.setAttribute("operations", lesOperations);
+
         request.getRequestDispatcher("/frais.jsp").forward(request, response);
     }
 }

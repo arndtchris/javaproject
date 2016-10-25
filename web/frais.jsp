@@ -15,5 +15,12 @@
 
 <jsp:body>
     <p>La page des frais</p>
+
+    <d:forEach items="${operations}" var="op">
+        <tr>
+            <td>Type Coffre: <d:out value="${op.TypeCoffre}"/></td>
+            <td>Période: <d:out value="${op.PeriodeLocation}"/></td>
+        </tr>
+    </d:forEach>
 </jsp:body>
 </t:simple_layout>
