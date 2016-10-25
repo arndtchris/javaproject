@@ -20,8 +20,7 @@
 </nav>
 
 <section>
-    <h1>${title}</h1>
-    <jsp:invoke fragment="body_area"/>
+    <jsp:doBody/>
 </section>
 
 
