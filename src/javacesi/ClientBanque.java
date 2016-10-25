@@ -30,7 +30,7 @@ public class ClientBanque extends Individu
 	
 	public ClientBanque() {
         super();
-		
+        this.coffres = new ArrayList<Coffre>();
 	}
 
     public Coffre getCoffreParDefaut()

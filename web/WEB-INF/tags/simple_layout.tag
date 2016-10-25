@@ -19,7 +19,7 @@
     </ul>
 </nav>
 
-<section>
+<section class="container container-fluid">
     <jsp:doBody/>
 </section>
 

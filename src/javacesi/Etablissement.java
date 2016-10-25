@@ -2,6 +2,7 @@ package javacesi;
 
 import com.sun.deploy.util.SessionState;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,11 +14,13 @@ public class Etablissement implements ICrud
     private int idEtab;
     private String nomEtab;
     private String adresseEtab;
-    private List<ClientBanque> clients;
+    private ArrayList<ClientBanque> clients;
 
-    public Etablissement(){}
+    public Etablissement(){
+        this.clients = new ArrayList<ClientBanque>();
+    }
 
-    public Etablissement(int id, String name, String adress, List<ClientBanque> cl)
+    public Etablissement(int id, String name, String adress, ArrayList<ClientBanque> cl)
     {
         this.idEtab = id;
         this.nomEtab = name;
@@ -28,6 +31,8 @@ public class Etablissement implements ICrud
     public void setIdEtab(int id){this.idEtab = id;}
     public void setNom(String nom){this.nomEtab = nom;}
     public void addClient(ClientBanque client){this.clients.add(client);}
+
+    public ArrayList<ClientBanque> getClients() {return this.clients;}
 
 
 

@@ -26,10 +26,11 @@ public class Parse {
 
     }
 
-    public ArrayList<AgenceXML> parseAgence(String fullPathToFile) {
+    public ArrayList<Agence> parseAgence(String fullPathToFile) {
 
         File file = new File(fullPathToFile);
         ArrayList<AgenceXML> lesAgences = new ArrayList<>();
+        ArrayList<Agence> agences = new ArrayList<Agence>();
 
         try {
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -46,6 +47,30 @@ public class Parse {
                 lesAgences.add(ag);
             }
 
+            for (AgenceXML agenceXML: lesAgences) {
+                Agence agence = new Agence();
+                agence.setAdresseEtab(agenceXML.Adresse);
+                if(agenceXML.listeClient != null){
+                    for(ClientBanqueXML clientXML : agenceXML.listeClient)
+                    {
+                        ClientBanque client = new ClientBanque();
+                        client.setAdresse(clientXML.adresse);
+                        client.setNom(clientXML.nom);
+                        client.setPrenom(clientXML.prenom);
+                        if(clientXML.Coffres != null){
+                            for (CoffreXML coffreXML : clientXML.Coffres){
+                                Coffre coffre = new Coffre();
+                                coffre.setObjets(coffreXML.contenu);
+                                coffre.setTypeCoffre(coffreXML.typeCoffre);
+                                client.addCoffre(coffre);
+                            }
+                        }
+                        agence.addClient(client);
+                    }
+                    agences.add(agence);
+                }
+            }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -58,7 +83,7 @@ public class Parse {
             e.printStackTrace();
         }
 
-        return lesAgences;
+        return agences;
     }
 
     public ArrayList<OperationXML> parseFrais(String fullPathToFile)

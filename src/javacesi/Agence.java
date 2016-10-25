@@ -7,11 +7,6 @@ public class Agence extends Etablissement
 
     private ArrayList<Coffre> listeCoffre;
 
-    /**
-     * Liste des clients de l'agence
-     */
-    private ArrayList<ClientBanque> listeClient;
-
 
     /**
      * Constructeur vide de la classe Agence. Instancie les listes ListeCoffre et ListeClient.
@@ -20,7 +15,6 @@ public class Agence extends Etablissement
     {
         super();
         listeCoffre = new ArrayList<Coffre>();
-        listeClient = new ArrayList<ClientBanque>();
     }
 
     /**
@@ -39,19 +33,5 @@ public class Agence extends Etablissement
     public ArrayList<Coffre> GetListeCoffre()
     {
         return listeCoffre;
-    }
-
-    /**
-     * Méthode
-     * @return
-     */
-    public ArrayList<ClientBanque> GetListeClient()
-    {
-        return listeClient;
-    }
-
-    public void AddClient(ClientBanque c)
-    {
-        listeClient.add(c);
     }
 }

@@ -36,7 +36,7 @@ public class CoffreController extends HttpServlet {
             case SERLVET:
                 String relativeWebPath = "outputs/banque.xml";
                 String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-                ArrayList<AgenceXML> ag = new Parse().parseAgence(absoluteDiskPath);
+                ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
                 req.setAttribute("agences", ag);
                 req.setAttribute("title", "Liste des coffres");
                 req.getRequestDispatcher("coffres.jsp").forward(req, resp);
