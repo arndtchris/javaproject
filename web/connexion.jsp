@@ -10,6 +10,18 @@
 
 <t:simple_layout>
     <jsp:body>
-        <p>Se connecter</p>
+        <p><h1>Se connecter</h1></p>
+        <table>
+            <tr>
+                <td>Nom :</td>
+                <td><input name="nom"/></td>
+            </tr>
+            <tr>
+                <td>Prénom :</td>
+                <td><input name="prenom"/></td>
+            </tr>
+        </table>
+        <br />
+        <button>S'identifier</button>
     </jsp:body>
 </t:simple_layout>
