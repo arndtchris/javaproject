@@ -15,12 +15,12 @@
     <ul>
         <li><a>Test</a></li>
         <li><a>Essai</a></li>
+        <li><a href="/connexion">Se connecter</a></li>
     </ul>
 </nav>
 
 <section>
-    <h1>${title}</h1>
-    <jsp:invoke fragment="body_area"/>
+    <jsp:doBody/>
 </section>
 
 
