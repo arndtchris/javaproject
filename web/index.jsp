@@ -8,16 +8,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<t:simple_layout title="Coffres">
-<jsp:attribute name="body_area">
+<t:simple_layout title="Accueil">
+    <jsp:body>
 
 
   <div>
-      ${requestScope.message}
+      <h1>Bienvenu cher client !</h1>
   </div>
 
-
-</jsp:attribute>
+    </jsp:body>
 
 </t:simple_layout>
 
