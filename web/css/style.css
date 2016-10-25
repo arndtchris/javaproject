@@ -62,8 +62,35 @@ nav a{
 
 .ClientCoffre a{
     color: #444444;
+    text-decoration: underline;
 }
-
+#CoffreFormulaire{
+    max-width: 600px;
+}
+#CoffreFormulaire .row{
+    height: 50px;
+}
+#CoffreFormulaire .row input{
+    margin: 0;
+}
+input[type="submit"], .retour{
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    border: 1px solid grey;
+    background-color: #F0F0F0;
+    font-size: 16px;
+    color: #444444;
+    text-align: center;
+    height: 30px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    padding: 5px;
+}
+.retour{
+    text-decoration: none;
+}
 /*/GRID /*/
 
 .container {
@@ -732,4 +759,7 @@ nav a{
     .col-lg-offset-0 {
         margin-left: 0;
     }
+}
+.clr{
+    clear:both;
 }

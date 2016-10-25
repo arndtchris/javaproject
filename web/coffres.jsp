@@ -13,7 +13,7 @@
       <c:forEach items="${requestScope.agences}" var="agence">
           <div class="Agence row">
               <div class="col-lg-12">
-                  <h2>Agence</h2>
+                  <h2>${agence.nomEtab}</h2>
                   <p>Adresse : ${agence.adresseEtab}</p>
               </div>
               <c:forEach items="${agence.clients}" var="client">
@@ -21,12 +21,12 @@
                       <div class="Client">
                           <h3>${client.prenom} ${client.nom}</h3>
                           <p>${client.adresse}</p>
-                          <c:forEach items="${client.coffres}" var="coffre">
-                              <ul class="ClientCoffre">
-                              <li>${coffre.typeCoffre}</li>
-                              <li> + <a>Ajouter un coffre</a></li>
-                              </ul>
-                          </c:forEach>
+                          <ul class="ClientCoffre">
+                              <li> + <a href="${pageContext.request.contextPath}/ajoutCoffre">Ajouter un coffre</a></li>
+                              <c:forEach items="${client.coffres}" var="coffre">
+                                  <li>${coffre.typeCoffre}</li>
+                              </c:forEach>
+                          </ul>
                       </div>
                   </div>
               </c:forEach>

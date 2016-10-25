@@ -12,10 +12,12 @@ import java.util.List;
  * Created by chris on 06/10/2016.
  */
 @XmlRootElement(name = "AgenceXML")
-@XmlType(propOrder = {"Adresse","listeClient"})
+@XmlType(propOrder = {"Adresse","listeClient","Nom"})
 public class AgenceXML {
     @XmlElement(name = "Adresse")
     public String Adresse;
+    @XmlElement(name = "Nom")
+    public String Nom;
     @XmlElementWrapper(name = "listeClient")
     @XmlElement(name = "ClientBanqueXML")
     public List<ClientBanqueXML> listeClient;

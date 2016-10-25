@@ -14,7 +14,7 @@
     <servlet-mapping>
         <servlet-name>Coffre</servlet-name>
         <url-pattern>/afficheCoffres</url-pattern>
-        <url-pattern>/afficheAutre</url-pattern>
+        <url-pattern>/ajoutCoffre</url-pattern>
     </servlet-mapping>
 
     <servlet>

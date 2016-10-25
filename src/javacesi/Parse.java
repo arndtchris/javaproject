@@ -47,6 +47,7 @@ public class Parse {
             for (AgenceXML agenceXML: lesAgences) {
                 Agence agence = new Agence();
                 agence.setAdresseEtab(agenceXML.Adresse);
+                agence.setNomEtab(agenceXML.Nom);
                 if(agenceXML.listeClient != null){
                     for(ClientBanqueXML clientXML : agenceXML.listeClient)
                     {
@@ -64,8 +65,8 @@ public class Parse {
                         }
                         agence.addClient(client);
                     }
-                    agences.add(agence);
                 }
+                agences.add(agence);
             }
 
         } catch (FileNotFoundException e) {

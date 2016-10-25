@@ -29,16 +29,19 @@ public class Etablissement implements ICrud
     }
 
     public void setIdEtab(int id){this.idEtab = id;}
-    public void setNom(String nom){this.nomEtab = nom;}
     public void addClient(ClientBanque client){this.clients.add(client);}
 
     public ArrayList<ClientBanque> getClients() {return this.clients;}
 
+    public String getAdresseEtab() {return adresseEtab;}
 
+    public void setAdresseEtab(String adresseEtab) {this.adresseEtab = adresseEtab;}
+
+    public void setNomEtab(String nom){this.nomEtab = nom;}
+
+    public String getNomEtab(){return nomEtab;}
 
     public int getIdEtab(){return this.idEtab;}
-
-    public String getNom(){return this.nomEtab;}
 
     public List<ClientBanque> getListClient(){return this.clients;}
 
@@ -84,14 +87,6 @@ public class Etablissement implements ICrud
         {
             System.out.println("Établissement supprimé");
         }
-    }
-
-    public String getAdresseEtab() {
-        return adresseEtab;
-    }
-
-    public void setAdresseEtab(String adresseEtab) {
-        this.adresseEtab = adresseEtab;
     }
 }
 

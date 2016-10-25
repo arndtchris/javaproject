@@ -5,18 +5,15 @@ import java.util.ArrayList;
 public class Banque extends Etablissement
 {
     private String designation;
-    private ArrayList<Secteur> listeSecteur;
 
     public Banque()
     {
         super();
-        listeSecteur = new ArrayList<Secteur>();
     }
 
     public Banque(String designation)
     {
         this.designation = designation;
-        listeSecteur = new ArrayList<Secteur>();
     }
 
     public void SetDesignation(String designation)
@@ -27,15 +24,5 @@ public class Banque extends Etablissement
     public String GetDesignation()
     {
         return designation;
-    }
-
-    public void AddSecteur(Secteur secteur)
-    {
-        listeSecteur.add(secteur);
-    }
-
-    public ArrayList<Secteur> GetListeSecteur()
-    {
-        return listeSecteur;
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Agences>
     <AgenceXML>
+        <Nom>Luxembourg Centre</Nom>
         <Adresse>Luxembourg, Luxembourg-ville, la place d'Armes|Plass d'Arem</Adresse>
         <listeClient>
             <ClientBanqueXML>
@@ -39,6 +40,7 @@
         </listeClient>
     </AgenceXML>
     <AgenceXML>
+        <Nom>Metz quartier Gare</Nom>
 		<Adresse>France, Metz-ville, place de la Gare (entrepôt unique)</Adresse>
 	</AgenceXML>
 </Agences>

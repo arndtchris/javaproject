@@ -15,6 +15,7 @@ public class Agence extends Etablissement
     {
         super();
         listeCoffre = new ArrayList<Coffre>();
+        this.setNomEtab("");
     }
 
     /**
