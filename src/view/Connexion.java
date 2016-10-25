@@ -76,7 +76,7 @@ public class Connexion {
 
                 //Instanciation des individus
                 ArrayList<ClientBanqueXML> clxml = new ArrayList<ClientBanqueXML>();
-                ArrayList<AgenceXML> agxml = new Parse().parseAgence();
+                ArrayList<AgenceXML> agxml = new Parse().parseAgence("coffres.xml");
                 for(int j=0; j<agxml.size(); j++)
                 {
                     if ((agxml.get(j).listeClient != null) && (agxml.get(j).listeClient.size() > 0))

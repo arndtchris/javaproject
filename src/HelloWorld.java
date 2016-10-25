@@ -27,8 +27,8 @@ public class HelloWorld {
 
 
 
-        ArrayList<AgenceXML> agences = new Parse().parseAgence();
-        ArrayList<OperationXML> operations = new Parse().parseFrais();
+        ArrayList<AgenceXML> agences = new Parse().parseAgence("outputs/banque.xml");
+        ArrayList<OperationXML> operations = new Parse().parseFrais("coffres.xml");
 
         for(int i = 0; i < agences.size(); i++)
         {

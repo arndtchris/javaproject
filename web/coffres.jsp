@@ -8,11 +8,18 @@
 <t:simple_layout>
 <jsp:body>
   <div>
-      <h1>Bienvenue cher client !</h1>
+      <h1>${title}</h1>
 
-      <p>${requestScope.message}</p>
       <c:forEach items="${requestScope.agences}" var="agence">
-      Adresse : ${agence.adresseEtab}
+          <div class="Agence">
+              <p>Adresse : ${agence.adresseEtab}</p>
+              <p>Coffres</p>
+              <c:forEach items="${agence.CoffresXML}" var="agence">
+                  <div class="Coffre">
+
+                  </div>
+              </c:forEach>
+          </div>
       </c:forEach>
   </div>
 

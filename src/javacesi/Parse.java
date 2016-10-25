@@ -6,6 +6,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javax.servlet.ServletContext;
 import javax.xml.bind.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,21 +19,19 @@ import java.util.ArrayList;
  * Created by chris on 04/10/2016.
  */
 public class Parse {
+    private ServletContext servletContext;
+
     public Parse()
     {
 
     }
 
-    public ArrayList<AgenceXML> parseAgence()
-    {
-        String fullPathToFile = donneCheminAbsolu("banque.xml");
+    public ArrayList<AgenceXML> parseAgence(String fullPathToFile) {
 
         File file = new File(fullPathToFile);
-
         ArrayList<AgenceXML> lesAgences = new ArrayList<>();
 
-        try
-        {
+        try {
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = db.parse(file);
             NodeList nodes = doc.getElementsByTagName("AgenceXML");
@@ -41,8 +40,7 @@ public class Parse {
 
             Unmarshaller unmarshaller = jc.createUnmarshaller();
 
-            for(int i = 0; i < nodes.getLength(); i++)
-            {
+            for (int i = 0; i < nodes.getLength(); i++) {
                 JAXBElement<AgenceXML> je = unmarshaller.unmarshal(nodes.item(i), AgenceXML.class);
                 AgenceXML ag = je.getValue();
                 lesAgences.add(ag);
@@ -63,7 +61,7 @@ public class Parse {
         return lesAgences;
     }
 
-    public ArrayList<OperationXML> parseFrais()
+    public ArrayList<OperationXML> parseFrais(String fullPathToFile)
     {
 
         /*File projectPath = new File("");
@@ -71,8 +69,6 @@ public class Parse {
 
         String helper = projectPath.getAbsolutePath();
         String helperFile = fileToParse.getAbsolutePath();*/
-
-        String fullPathToFile = donneCheminAbsolu("CatalogueFrais2016.xml");
 
         File file = new File(fullPathToFile);
 
@@ -173,18 +169,6 @@ public class Parse {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-    }
-
-    private String donneCheminAbsolu(String nomDuFicher)
-    {
-        File projectPath = new File("");
-        File fileToParse = new File("/assets/" + nomDuFicher);
-
-        String helper = projectPath.getAbsolutePath();
-        String helperFile = fileToParse.getAbsolutePath();
-        String fullPathToFile = helper + helperFile.substring(2);
-
-        return fullPathToFile;
     }
 
     /*private static void jaxbObjectToXML(OperationXML emp, int i) {

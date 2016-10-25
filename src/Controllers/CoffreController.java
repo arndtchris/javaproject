@@ -1,6 +1,7 @@
 package Controllers;
 import javacesi.*;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -33,17 +34,11 @@ public class CoffreController extends HttpServlet {
         String path = req.getServletPath();
         switch (path) {
             case SERLVET:
-                Parse parser = new Parse();
-                ArrayList<AgenceXML> ag = parser.parseAgence();
-                ArrayList<Agence> agences = new ArrayList<Agence>();
-                for(Iterator<AgenceXML> i = ag.iterator(); i.hasNext(); ) {
-                    Agence newAgence = new Agence();
-                    AgenceXML oldAgence = i.next();
-                    newAgence.setAdresseEtab(oldAgence.Adresse);
-                    agences.add(newAgence);
-                }
-                req.setAttribute("agences", agences);
-                req.setAttribute("message", "Affiche coffres");
+                String relativeWebPath = "outputs/banque.xml";
+                String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+                ArrayList<AgenceXML> ag = new Parse().parseAgence(absoluteDiskPath);
+                req.setAttribute("agences", ag);
+                req.setAttribute("title", "Liste des coffres");
                 req.getRequestDispatcher("coffres.jsp").forward(req, resp);
                 break;
             default:

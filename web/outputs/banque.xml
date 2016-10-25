@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Agences>
+    <AgenceXML>
+        <Adresse>Luxembourg, Luxembourg-ville, la place d'Armes|Plass d'Arem</Adresse>
+        <listeClient>
+            <ClientBanqueXML>
+                <prenom>Chantal</prenom>
+                <nom>DUPOND</nom>
+                <adresse>1 r des Financiers, LUXEMBOURG, L-1530</adresse>
+                <Coffres>
+                    <CoffreXML>
+                        <typeCoffre>Coffre-fort</typeCoffre>
+                        <dateOuverture>15/06/2016</dateOuverture>
+                        <dateFermeture>15/10/2016</dateFermeture>
+                        <contenu>Lingot</contenu>
+                        <piece>sous-sol</piece>
+                    </CoffreXML>
+                </Coffres>
+            </ClientBanqueXML>
+            <ClientBanqueXML>
+                <prenom>Maurice</prenom>
+                <nom>DUPOND</nom>
+                <adresse>1 r des Financiers, LUXEMBOURG, L-1530</adresse>
+                <Coffres>
+                    <CoffreXML>
+                        <typeCoffre>Armoire forte</typeCoffre>
+                        <dateOuverture>01/10/2016</dateOuverture>
+                        <dateFermeture>01/10/2016</dateFermeture>
+                        <contenu>Tableaux</contenu>
+                        <piece>grenier</piece>
+                    </CoffreXML>
+                </Coffres>
+            </ClientBanqueXML>
+            <ClientBanqueXML>
+                <prenom>Etienne</prenom>
+                <nom>JOUVET</nom>
+                <adresse>11 quai de la Gare, METZ, F-57000</adresse>
+            </ClientBanqueXML>
+        </listeClient>
+    </AgenceXML>
+    <AgenceXML>
+		<Adresse>France, Metz-ville, place de la Gare (entrepôt unique)</Adresse>
+	</AgenceXML>
+</Agences>
