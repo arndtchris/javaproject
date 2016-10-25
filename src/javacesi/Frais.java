@@ -12,18 +12,28 @@ public class Frais implements ICrud
 {
 
 	private Integer IdFrais;
-	private Date DateAnnee;
-	private Float Montant;
-	private String Description;
+	private String TypeCoffre;
+	private String PeriodeLocation;
+	private String PrixPeriode;
+	private String Devise;
 
 	public Frais() {
 	}
 
-	public Frais(Integer aIdFrais, Date aDateAnnee, Float aMontant, String aDescription) {
+	public Frais(FraisXML f)
+	{
+		this.TypeCoffre = f.TypeCoffre;
+		this.Devise = f.Devise;
+		this.PeriodeLocation = f.PeriodeLocation;
+		this.PrixPeriode = f.PrixPeriode;
+	}
+
+	public Frais(Integer aIdFrais, String typeCoffre, String periodeLocation, String prixPeriode,String devise) {
 		this.IdFrais = aIdFrais;
-		this.DateAnnee = aDateAnnee;
-		this.Montant = aMontant;
-		this.Description = aDescription;
+		this.TypeCoffre = typeCoffre;
+		this.PeriodeLocation = periodeLocation;
+		this.PrixPeriode = prixPeriode;
+		this.Devise = devise;
 	}
 
 	public void SetIdFrais(Integer IdFrais) {
@@ -34,28 +44,33 @@ public class Frais implements ICrud
 		return IdFrais;
 	}
 
-	public void SetDateAnnee(Date aDateAnnee) {
-		this.DateAnnee = aDateAnnee;
+	public void SetTypeCoffre(String typeCoffre) {
+		this.TypeCoffre = typeCoffre;
 	}
 
-	public Date GetDateAnnee() {
-		return DateAnnee;
+	public String GetTypeCoffre() {
+		return this.TypeCoffre;
 	}
 
-	public void SetMontant(Float aMontant) {
-		this.Montant = aMontant;
+	public void SetPeriodeLocation(String periode) {
+		this.PeriodeLocation = periode;
 	}
 
-	public Float GetMontant() {
-		return Montant;
+	public String GetPeriodeLocation()
+	{
+		return this.PeriodeLocation;
 	}
 
-	public void SetDescription(String aDescription) {
-		this.Description = aDescription;
+	public String GetPrixPeriode() {
+		return this.PrixPeriode;
 	}
 
-	public String GetDescription() {
-		return Description;
+	public void SetDevise(String dev) {
+		this.Devise = dev;
+	}
+
+	public String GetDevise() {
+		return this.Devise;
 	}
 
 	@Override

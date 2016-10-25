@@ -15,9 +15,9 @@ public class FraisXML {
     @XmlElement(name = "TypeCoffre")
     public String TypeCoffre;
     @XmlElement(name = "PeriodeLocation")
-    private String PeriodeLocation;
+    public String PeriodeLocation;
     @XmlElement(name = "PrixPeriode")
-    private String PrixPeriode;
+    public String PrixPeriode;
     @XmlElement(name = "Devise")
-    private String Devise;
+    public String Devise;
 }
