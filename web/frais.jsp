@@ -16,6 +16,15 @@
 
 <jsp:body>
     <h1>Catalogue des frais</h1>
+
+    <form action="frais" method="post">
+        Type de coffre : <input type="text" name="typecoffre"> <br/>
+        Période de location : <input type="text" name="periodeLocation"> <br/>
+        Tarif de la période : <input type="text" name="prixPeriode"> <br/>
+        Devise : <input type="text" name="devise"> <br/>
+        <input type="submit" />
+    </form>
+
     <div id="AgenceContainer" class="row">
             <d:forEach items="${requestScope.lesfrais}" var="f">
                 <div class="col-lg-3">
