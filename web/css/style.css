@@ -52,6 +52,7 @@ nav a{
     display: inline-block;
     padding: 5px 10px;
     height: 180px;
+    width:100%;
 }
 #AgenceContainer h3{
     background-color: #77C2FF;
