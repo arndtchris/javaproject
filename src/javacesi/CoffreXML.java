@@ -14,7 +14,7 @@ public class CoffreXML {
     @XmlElement(name = "typeCoffre")
     public String typeCoffre;
     @XmlElement(name = "dateOuverture")
-    public String dateOUverture;
+    public String dateOuverture;
     @XmlElement(name = "dateFermeture")
     public String dateFermeture;
     @XmlElement(name = "contenu")

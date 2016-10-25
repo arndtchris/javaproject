@@ -13,6 +13,7 @@
 
     <servlet-mapping>
         <servlet-name>Coffre</servlet-name>
-        <url-pattern>/coffre</url-pattern>
+        <url-pattern>/afficheCoffres</url-pattern>
+        <url-pattern>/afficheAutre</url-pattern>
     </servlet-mapping>
 </web-app>

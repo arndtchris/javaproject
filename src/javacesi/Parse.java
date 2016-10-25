@@ -24,7 +24,7 @@ public class Parse {
 
     public ArrayList<AgenceXML> parseAgence()
     {
-        File file = new File("assets/banque.xml");
+        File file = new File("D:\\cours\\JEE\\assets\\banque.xml");
 
         ArrayList<AgenceXML> lesAgences = new ArrayList<>();
 
@@ -109,6 +109,16 @@ public class Parse {
             operas.operations = lesOperations;
             marshaller.marshal(operas, new File("assets/lesOperations.xml"));
 
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void parseCoffres() {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Coffre.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            Coffre coffre = (Coffre) jaxbUnmarshaller.unmarshal(new File("assets/coffres.xml"));
 
         } catch (JAXBException e) {
             e.printStackTrace();
