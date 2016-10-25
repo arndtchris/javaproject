@@ -32,18 +32,11 @@ public final class ConnexionForm {
 
         /* Validation du champ nom. */
         try {
-            validationNom( nom );
+            validationNom( nom, prenom );
         } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
         utilisateur.setNom( nom );
-
-        /* Validation du champ prénom. */
-        try {
-            validationPrenom( prenom );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PRENOM, e.getMessage() );
-        }
         utilisateur.setPrenom( prenom );
 
         /* Initialisation du résultat global de la validation. */
