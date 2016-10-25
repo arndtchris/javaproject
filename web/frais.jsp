@@ -15,8 +15,8 @@
     </jsp:attribute>
 
 <jsp:body>
+    <h1>Catalogue des frais</h1>
     <div id="AgenceContainer" class="row">
-    <p class="col-lg-12">La page des frais</p>
             <d:forEach items="${requestScope.lesfrais}" var="f">
                 <div class="col-lg-3">
                     <div class="Client">
