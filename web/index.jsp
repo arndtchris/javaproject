@@ -10,20 +10,40 @@
 
 <t:simple_layout>
     <jsp:body>
-        <form name="firstForm" action="Controllers.LogController" method="post">
-        <p><h1>Se connecter</h1></p>
-        <table>
-            <tr>
-                <td>Nom :</td>
-                <td><input name="nom"/></td>
-            </tr>
-            <tr>
-                <td>Prénom :</td>
-                <td><input name="prenom"/></td>
-            </tr>
-        </table>
-        <br />
-        <button type = submit value="Envoyer">Se connecter</button>
+
+        <form method="post" action="connexion">
+            <fieldset>
+                <p>Vous pouvez vous connecter via ce formulaire.</p>
+
+                <table>
+
+                <tr>
+                    <td>
+                        <label for="nom">Nom <span class="requis">*</span></label>
+                    </td>
+                    <td>
+                        <input type="text" id="nom" name="nom" value="" size="20" maxlength="60" />
+                    </td>
+                <span class="erreur">${form.erreurs['nom']}</span>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                <label for="prenom">Prénom <span class="requis">*</span></label>
+                <input type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" />
+                <span class="erreur">${form.erreurs['prenom']}</span>
+                <br />
+                </tr>
+
+                <input type="submit" value="Connexion" class="sansLabel" />
+                <br />
+
+                <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
+            </fieldset>
+            </table>
         </form>
+
     </jsp:body>
 </t:simple_layout>
