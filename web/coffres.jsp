@@ -22,9 +22,10 @@
                           <h3>${client.prenom} ${client.nom}</h3>
                           <p>${client.adresse}</p>
                           <c:forEach items="${client.coffres}" var="coffre">
-                              <div class="ClientCoffre">
-                                + ${coffre.typeCoffre}
-                              </div>
+                              <ul class="ClientCoffre">
+                              <li>${coffre.typeCoffre}</li>
+                              <li> + <a>Ajouter un coffre</a></li>
+                              </ul>
                           </c:forEach>
                       </div>
                   </div>
