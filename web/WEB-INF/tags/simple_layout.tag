@@ -15,7 +15,7 @@
     <ul>
         <li><a>Test</a></li>
         <li><a>Essai</a></li>
-        <li><a href="/connexion.jsp">Se connecter</a></li>
+        <li><a href="/index.jsp">Se connecter</a></li>
     </ul>
 </nav>
 

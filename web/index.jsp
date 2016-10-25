@@ -22,6 +22,9 @@
             </tr>
         </table>
         <br />
-        <button>S'identifier</button>
+        <button onclick="function checkLogin () {
+
+
+        }">S'identifier</button>
     </jsp:body>
 </t:simple_layout>
