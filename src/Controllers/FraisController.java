@@ -22,8 +22,9 @@ public class FraisController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String relativeWebPath = "outputs/catalogueFrais2016.xml";
+        String relativeWebPath = "outputs/Cataloguefrais2016.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+
         ArrayList<FraisXML> lesFraisXML = new Parse().parseFrais(absoluteDiskPath);
         ArrayList<Frais> lesFrais = new ArrayList<Frais>();
 
@@ -32,8 +33,8 @@ public class FraisController extends HttpServlet {
             lesFrais.add(new Frais(f));
         }
 
-        request.setAttribute("lesFrais", lesFrais);
+        request.setAttribute("lesfrais", lesFrais);
 
-        request.getRequestDispatcher("/frais.jsp").forward(request, response);
+        request.getRequestDispatcher("frais.jsp").forward(request, response);
     }
 }

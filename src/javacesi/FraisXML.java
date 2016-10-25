@@ -20,4 +20,9 @@ public class FraisXML {
     public String PrixPeriode;
     @XmlElement(name = "Devise")
     public String Devise;
+
+    public FraisXML()
+    {
+
+    }
 }
