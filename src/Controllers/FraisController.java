@@ -1,7 +1,6 @@
 package Controllers;
 
-import javacesi.OperationXML;
-import javacesi.Parse;
+import javacesi.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,7 +22,17 @@ public class FraisController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList<OperationXML> lesOperations = new Parse().parseOperation();
+        String relativeWebPath = "outputs/catalogueFrais2016.xml";
+        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+        ArrayList<FraisXML> lesFraisXML = new Parse().parseFrais(absoluteDiskPath);
+        ArrayList<Frais> lesFrais = new ArrayList<Frais>();
+
+        for (FraisXML f : lesFraisXML)
+        {
+            lesFrais.add(new Frais(f));
+        }
+
+        request.setAttribute("lesFrais", lesFrais);
 
         request.getRequestDispatcher("/frais.jsp").forward(request, response);
     }

@@ -1,7 +1,5 @@
 package javacesi;
 
-import com.sun.deploy.util.SessionState;
-import jdk.internal.org.xml.sax.InputSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -12,7 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -86,18 +83,12 @@ public class Parse {
         return agences;
     }
 
-    public ArrayList<OperationXML> parseFrais(String fullPathToFile)
+    public ArrayList<FraisXML> parseFrais(String fullPathToFile)
     {
-
-        /*File projectPath = new File("");
-        File fileToParse = new File("/assets/CatalogueFrais2016.xml");
-
-        String helper = projectPath.getAbsolutePath();
-        String helperFile = fileToParse.getAbsolutePath();*/
 
         File file = new File(fullPathToFile);
 
-        ArrayList<OperationXML> lesOperations = new ArrayList<>();
+        ArrayList<FraisXML> lesOperations = new ArrayList<>();
 
         try
         {
@@ -105,14 +96,14 @@ public class Parse {
             Document doc = db.parse(file);
             NodeList nodes = doc.getElementsByTagName("OperationXML");
 
-            JAXBContext jc = JAXBContext.newInstance(OperationXML.class);
+            JAXBContext jc = JAXBContext.newInstance(FraisXML.class);
 
             Unmarshaller unmarshaller = jc.createUnmarshaller();
 
             for(int i = 0; i < nodes.getLength(); i++)
             {
-                JAXBElement<OperationXML> je = unmarshaller.unmarshal(nodes.item(i), OperationXML.class);
-                OperationXML op = je.getValue();
+                JAXBElement<FraisXML> je = unmarshaller.unmarshal(nodes.item(i), FraisXML.class);
+                FraisXML op = je.getValue();
                 lesOperations.add(op);
             }
 
@@ -131,44 +122,6 @@ public class Parse {
         return lesOperations;
     }
 
-
-    public ArrayList<OperationXML> parseOperation()
-    {
-        File file = new File("assets/Cataloguefrais2016.xml");
-
-        ArrayList<OperationXML> lesOperations = new ArrayList<>();
-
-        try
-        {
-            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            Document doc = db.parse(file);
-            NodeList nodes = doc.getElementsByTagName("OperationXML");
-
-            JAXBContext jc = JAXBContext.newInstance(OperationXML.class);
-
-            Unmarshaller unmarshaller = jc.createUnmarshaller();
-
-            for(int i = 0; i < nodes.getLength(); i++)
-            {
-                JAXBElement<OperationXML> je = unmarshaller.unmarshal(nodes.item(i), OperationXML.class);
-                OperationXML ope = je.getValue();
-                lesOperations.add(ope);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-
-        return lesOperations;
-    }
 
     public void operationsToXML(ArrayList<OperationXML> lesOperations) {
         try {
