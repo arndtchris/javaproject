@@ -35,6 +35,13 @@ public class Frais implements ICrud
 		this.devise = devise;
 	}
 
+	public Frais(String typeCoffre, String periodeLocation, String prixPeriode,String devise) {
+		this.typecoffre = typeCoffre;
+		this.periodeLocation = periodeLocation;
+		this.prixPeriode = prixPeriode;
+		this.devise = devise;
+	}
+
 
 
 	@Override
@@ -111,5 +118,15 @@ public class Frais implements ICrud
 
 	public void setDevise(String devise) {
 		devise = devise;
+	}
+
+	public void setIdFrais(Integer id)
+	{
+		IdFrais = id;
+	}
+
+	public Integer getIdFrais()
+	{
+		return IdFrais;
 	}
 }
