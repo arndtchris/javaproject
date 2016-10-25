@@ -84,6 +84,42 @@ public class Parse {
         return agences;
     }
 
+    public ArrayList<FraisXML> insertFrais(String fullPathToFile,FraisXML newFrais)
+    {
+        Integer newID = 0;
+        ArrayList<FraisXML> lesFrais = this.parseFrais(fullPathToFile);
+
+        for(FraisXML fr : lesFrais)
+        {
+            if(newID < Integer.parseInt(fr.IdOperation))
+            {
+                newID = Integer.parseInt(fr.IdOperation);
+            }
+        }
+
+        newID += 1;
+
+        newFrais.IdOperation = newID.toString();
+
+        lesFrais.add(newFrais);
+
+
+        try {
+            FraisXMLs operas = new FraisXMLs();
+            JAXBContext jc2 = JAXBContext.newInstance(FraisXMLs.class);
+            Marshaller marshaller = jc2.createMarshaller();
+
+            operas.operations = lesFrais;
+            marshaller.marshal(operas, new File(fullPathToFile));
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        return this.parseFrais(fullPathToFile);
+
+    }
+
     public ArrayList<FraisXML> parseFrais(String fullPathToFile)
     {
 
@@ -95,7 +131,7 @@ public class Parse {
         {
             DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = db.parse(file);
-            NodeList nodes = doc.getElementsByTagName("OperationXML");
+            NodeList nodes = doc.getElementsByTagName("FraisXML");
 
             JAXBContext jc = JAXBContext.newInstance(FraisXML.class);
 
@@ -124,10 +160,10 @@ public class Parse {
     }
 
 
-    public void operationsToXML(ArrayList<OperationXML> lesOperations) {
+    /*public void operationsToXML(ArrayList<OperationXML> lesOperations) {
         try {
-            OperationXMLs operas = new OperationXMLs();
-            JAXBContext jc2 = JAXBContext.newInstance(OperationXMLs.class);
+            FraisXMLs operas = new FraisXMLs();
+            JAXBContext jc2 = JAXBContext.newInstance(FraisXMLs.class);
             Marshaller marshaller = jc2.createMarshaller();
 
             //Constitu un fichier contenant autant de noeuds que d'objets contenu dans operas
@@ -137,7 +173,7 @@ public class Parse {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void parseCoffres() {
         try {
