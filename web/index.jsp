@@ -10,6 +10,7 @@
 
 <t:simple_layout>
     <jsp:body>
+        <form name="firstForm" action="Controllers.LogController" method="post">
         <p><h1>Se connecter</h1></p>
         <table>
             <tr>
@@ -22,9 +23,7 @@
             </tr>
         </table>
         <br />
-        <button onclick="function checkLogin () {
-
-
-        }">S'identifier</button>
+        <button type = submit value="Envoyer">Se connecter</button>
+        </form>
     </jsp:body>
 </t:simple_layout>

@@ -18,13 +18,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Connexion</servlet-name>
+        <servlet-name>index</servlet-name>
         <servlet-class>Controllers.LogController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Connexion</servlet-name>
-        <url-pattern>/connexion</url-pattern>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
     <servlet>
