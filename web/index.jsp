@@ -29,17 +29,18 @@
 
                 <tr>
                     <td>
-
+                        <label for="prenom">Prénom <span class="requis">*</span></label>
                     </td>
-                <label for="prenom">Prénom <span class="requis">*</span></label>
-                <input type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" />
+                    <td>
+                        <input type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" />
+                    </td>
                 <span class="erreur">${form.erreurs['prenom']}</span>
-                <br />
                 </tr>
-
-                <input type="submit" value="Connexion" class="sansLabel" />
-                <br />
-
+                <tr>
+                    <td>
+                        <input type="submit" value="Connexion" class="sansLabel" />
+                    </td>
+                </tr>
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
             </fieldset>
             </table>

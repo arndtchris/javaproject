@@ -1,11 +1,12 @@
 package javacesi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.ServletContext;
 
 import javax.servlet.http.HttpServletRequest;
 
-import javacesi.ClientBanque;
 
 public final class ConnexionForm {
     private static final String CHAMP_NOM  = "nom";
@@ -22,18 +23,71 @@ public final class ConnexionForm {
         return erreurs;
     }
 
-    public ClientBanque connecterUtilisateur( HttpServletRequest request ) {
+    public ClientBanque connecterUtilisateur(HttpServletRequest request ) {
         /* Récupération des champs du formulaire */
-        String email = getValeurChamp( request, CHAMP_NOM );
-        String motDePasse = getValeurChamp( request, CHAMP_PRENOM );
+        String nom = getValeurChamp( request, CHAMP_NOM );
+        String prenom = getValeurChamp( request, CHAMP_PRENOM );
 
         ClientBanque utilisateur = new ClientBanque();
 
+        /* Validation du champ nom. */
+        try {
+            validationNom( nom );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_NOM, e.getMessage() );
+        }
+        utilisateur.setNom( nom );
+
+        /* Validation du champ prénom. */
+        try {
+            validationPrenom( prenom );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_PRENOM, e.getMessage() );
+        }
+        utilisateur.setPrenom( prenom );
+
+        /* Initialisation du résultat global de la validation. */
+        if ( erreurs.isEmpty() ) {
+            resultat = "Succès de la connexion.";
+        } else {
+            resultat = "Échec de la connexion.";
+        }
 
         return utilisateur;
     }
 
+    /**
+     * Valide l'adresse email saisie.
+     */
+    private void validationNom( String nom, String prenom ) throws Exception {
+        ArrayList<ClientBanqueXML> clxml = new ArrayList<ClientBanqueXML>();
+        ArrayList<Agence> agxml = new Parse().parseAgence("outputs/banques.xml");
 
+
+        for(int i=0; i<clxml.size(); i++)
+        {
+            //System.out.println(clxml.get(i).nom.toString());
+            //System.out.println(clxml.get(i).prenom.toString());
+
+            if (!(nom.equals(clxml.get(i).nom.toString())) && !(prenom.equals(clxml.get(i).prenom.toString())))
+            {
+            throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+            }
+        }
+    }
+
+    /**
+     * Valide le mot de passe saisi.
+     */
+    private void validationPrenom( String prenom ) throws Exception {
+        if ( prenom != null ) {
+            if ( prenom.length() < 3 ) {
+                throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
+            }
+        } else {
+            throw new Exception( "Merci de saisir votre mot de passe." );
+        }
+    }
 
     /*
      * Ajoute un message correspondant au champ spécifié à la map des erreurs.
@@ -54,4 +108,5 @@ public final class ConnexionForm {
             return valeur;
         }
     }
+
 }
