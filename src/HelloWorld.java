@@ -1,7 +1,4 @@
-import javacesi.Agence;
-import javacesi.AgenceXML;
-import javacesi.ClientBanqueXML;
-import javacesi.Parse;
+import javacesi.*;
 import view.Connexion;
 
 import java.util.ArrayList;
@@ -31,6 +28,7 @@ public class HelloWorld {
 
 
         ArrayList<AgenceXML> agences = new Parse().parseAgence();
+        ArrayList<OperationXML> operations = new Parse().parseFrais();
 
         for(int i = 0; i < agences.size(); i++)
         {
