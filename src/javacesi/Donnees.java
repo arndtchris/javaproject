@@ -178,9 +178,9 @@ public class Donnees {
 		}
 
 		// Création des frais
-		Frais fra1 = new Frais(1,d1e,(float) 200.0,"Contr�le des huissiers");
+		/*Frais fra1 = new Frais(1,d1e,(float) 200.0,"Contr�le des huissiers");
 		Frais fra2 = new Frais(2,d2e,(float) 100.0,"Taxe");
-		Frais fra3 = new Frais(3,d3e,(float) 50.0,"Contr�le de routine");
+		Frais fra3 = new Frais(3,d3e,(float) 50.0,"Contr�le de routine");*/
 		
 		// Création des opérations
 		op1.setFrs(fra1);

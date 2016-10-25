@@ -46,11 +46,11 @@ public class ReserveCoffre extends JPanel{
         frame.add(view);
 
         Parse parser = new Parse();
-        ArrayList<OperationXML> ops = parser.parseOperation();
+        ArrayList<FraisXML> ops = parser.parseFrais("coffres.xml");
 
         ArrayList<String> coffres = new ArrayList<String>();
         coffres.add("Sélectionnez un coffre");
-        for (OperationXML op : ops) {
+        for (FraisXML op : ops) {
             coffres.add(op.TypeCoffre);
         }
         final JLabel field = new JLabel();
@@ -65,7 +65,7 @@ public class ReserveCoffre extends JPanel{
 
         combo.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                for (OperationXML o : ops){
+                for (FraisXML o : ops){
                     if(Objects.equals(o.TypeCoffre, combo.getSelectedItem().toString()))
                     {
                         System.out.print("test");
