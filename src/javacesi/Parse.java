@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +25,9 @@ public class Parse {
 
     public ArrayList<AgenceXML> parseAgence()
     {
-        File file = new File("D:\\cours\\JEE\\assets\\banque.xml");
+        String fullPathToFile = donneCheminAbsolu("banque.xml");
+
+        File file = new File(fullPathToFile);
 
         ArrayList<AgenceXML> lesAgences = new ArrayList<>();
 
@@ -58,6 +61,53 @@ public class Parse {
         }
 
         return lesAgences;
+    }
+
+    public ArrayList<OperationXML> parseFrais()
+    {
+
+        /*File projectPath = new File("");
+        File fileToParse = new File("/assets/CatalogueFrais2016.xml");
+
+        String helper = projectPath.getAbsolutePath();
+        String helperFile = fileToParse.getAbsolutePath();*/
+
+        String fullPathToFile = donneCheminAbsolu("CatalogueFrais2016.xml");
+
+        File file = new File(fullPathToFile);
+
+        ArrayList<OperationXML> lesOperations = new ArrayList<>();
+
+        try
+        {
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("OperationXML");
+
+            JAXBContext jc = JAXBContext.newInstance(OperationXML.class);
+
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for(int i = 0; i < nodes.getLength(); i++)
+            {
+                JAXBElement<OperationXML> je = unmarshaller.unmarshal(nodes.item(i), OperationXML.class);
+                OperationXML op = je.getValue();
+                lesOperations.add(op);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+        return lesOperations;
     }
 
 
@@ -123,6 +173,18 @@ public class Parse {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+    }
+
+    private String donneCheminAbsolu(String nomDuFicher)
+    {
+        File projectPath = new File("");
+        File fileToParse = new File("/assets/" + nomDuFicher);
+
+        String helper = projectPath.getAbsolutePath();
+        String helperFile = fileToParse.getAbsolutePath();
+        String fullPathToFile = helper + helperFile.substring(2);
+
+        return fullPathToFile;
     }
 
     /*private static void jaxbObjectToXML(OperationXML emp, int i) {
