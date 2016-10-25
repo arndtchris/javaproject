@@ -9,6 +9,10 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:simple_layout>
+    <jsp:attribute name="title">
+      Gestion des frais
+    </jsp:attribute>
+
 <jsp:body>
     <p>La page des frais</p>
 </jsp:body>
