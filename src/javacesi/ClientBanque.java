@@ -28,6 +28,14 @@ public class ClientBanque extends Individu
         this.setAgenceRattachement(agr);
         this.coffres.add(cfr);
     }
+
+    public ClientBanque(ClientBanqueXML c)
+    {
+        this.setNom(c.nom);
+        this.setPrenom(c.prenom);
+        this.setAdresse(c.adresse);
+        this.setIdClient(Integer.parseInt(c.idClient));
+    }
 	
 	public ClientBanque() {
         super();
