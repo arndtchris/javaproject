@@ -20,7 +20,7 @@ public class CoffreXML {
     @XmlElement(name = "contenu")
     public String contenu;
     @XmlElement(name = "idCoffre")
-    public int idCoffre;
+    public String idCoffre;
     @XmlElement(name = "piece")
     public String piece;
 

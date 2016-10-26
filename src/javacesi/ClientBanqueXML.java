@@ -20,7 +20,7 @@ public class ClientBanqueXML {
     @XmlElement(name = "adresse")
     public String adresse;
     @XmlElement(name = "idClient")
-    public int idClient;
+    public String idClient;
     @XmlElementWrapper(name = "Coffres")
     @XmlElement(name = "CoffreXML")
     public List<CoffreXML> Coffres;

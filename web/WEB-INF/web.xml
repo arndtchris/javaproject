@@ -26,6 +26,7 @@
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/connexion</url-pattern>
+        <url-pattern>/moncompte</url-pattern>
     </servlet-mapping>
 
     <servlet>

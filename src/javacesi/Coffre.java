@@ -21,6 +21,11 @@ public class Coffre implements ICrud
     protected boolean peutFaireVirement;
     protected String objets;
 
+    private String dateOuverture;
+    private String dateFermeture;
+    private String piece;
+    private String contenu;
+
 
     //constructeurs
 
@@ -33,6 +38,23 @@ public class Coffre implements ICrud
         this.client = cl;
         this.montant = montant;
         this.operations = lesOperations;
+    }
+
+    public Coffre(String id,String dateOuverture, String dateFermeture, String contenu )
+    {
+        this.idCoffre = Integer.parseInt(id);
+        this.dateOuverture = dateOuverture;
+        this.dateFermeture = dateFermeture;
+        this.contenu = contenu;
+    }
+
+    public Coffre(CoffreXML c)
+    {
+        idCoffre = Integer.parseInt(c.idCoffre);
+        typeCoffre = c.typeCoffre;
+        dateFermeture = c.dateFermeture;
+        dateOuverture = c.dateOuverture;
+        contenu = c.contenu;
     }
 
     public Coffre()
@@ -242,4 +264,35 @@ public class Coffre implements ICrud
         }
     }
 
+    public String getDateOuverture() {
+        return dateOuverture;
+    }
+
+    public void setDateOuverture(String dateOuverture) {
+        this.dateOuverture = dateOuverture;
+    }
+
+    public String getDateFermeture() {
+        return dateFermeture;
+    }
+
+    public void setDateFermeture(String dateFermeture) {
+        this.dateFermeture = dateFermeture;
+    }
+
+    public String getPiece() {
+        return piece;
+    }
+
+    public void setPiece(String piece) {
+        this.piece = piece;
+    }
+
+    public String getContenu() {
+        return contenu;
+    }
+
+    public void setContenu(String contenu) {
+        this.contenu = contenu;
+    }
 }
