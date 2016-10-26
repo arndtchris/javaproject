@@ -25,16 +25,14 @@ public class CoffreController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws IOException,ServletException{
         String path = req.getServletPath();
-        /*switch (path) {
+        switch (path) {
             case "/enregistreCoffre":
-                String relativeWebPath = "outputs/banque.xml";
-                String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-                ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
+                this.enregistreCoffre(req, resp, Integer.parseInt(req.getParameter("id_client")));
                 break;
             default:
                 req.getRequestDispatcher("coffres.jsp").forward(req, resp);
                 break;
-        }*/
+        }
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -56,10 +54,32 @@ public class CoffreController extends HttpServlet {
         req.getRequestDispatcher("coffres.jsp").forward(req, resp);
     }
 
-    public void vueAjoutCoffre(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-    {
+    public void vueAjoutCoffre(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("title", "Ajouter un coffre");
         RequestDispatcher RequetsDispatcherObj = req.getRequestDispatcher("addCoffre.jsp");
         RequetsDispatcherObj.forward(req, resp);
+    }
+
+    public void enregistreCoffre(HttpServletRequest req, HttpServletResponse resp, int id_client) throws ServletException, IOException {
+        String relativeWebPath = "outputs/banque.xml";
+        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+        ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
+
+        for (Agence agence : ag) {
+            for (ClientBanque client : agence.getClients()) {
+                if(client.getIdClient() == id_client)
+                {
+                    Coffre c = new Coffre();
+                    c.setTypeCoffre(req.getParameter("TypeCoffre"));
+                    c.setLocalisation(req.getParameter("Localisation"));
+                    c.setTypeSecurite(req.getParameter("TypeSecurite"));
+                    req.getParameter("Default");
+                    client.addCoffre(c);
+                }
+            }
+        }
+        req.setAttribute("agences", ag);
+        req.setAttribute("title", "Liste des coffres");
+        req.getRequestDispatcher("coffres.jsp").forward(req, resp);
     }
 }

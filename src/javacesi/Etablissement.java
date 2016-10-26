@@ -30,7 +30,7 @@ public class Etablissement implements ICrud
 
     public void setIdEtab(int id){this.idEtab = id;}
     public void addClient(ClientBanque client){this.clients.add(client);}
-    public List<ClientBanque> getClient(){return this.clients;}
+    public List<ClientBanque> getClients(){return this.clients;}
 
 
     public String getAdresseEtab() {return adresseEtab;}

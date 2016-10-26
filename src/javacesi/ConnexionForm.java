@@ -64,7 +64,7 @@ public final class ConnexionForm {
             ArrayList<ClientBanque> clientxml = new ArrayList<ClientBanque>();
             for(int j = 0; j<agxml.size(); j++)
             {
-                clientxml.addAll(agxml.get(j).getClient());
+                clientxml.addAll(agxml.get(j).getClients());
             }
             Boolean trouve = false;
             for(int i = 0; i< clientxml.size(); i++)
