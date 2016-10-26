@@ -15,8 +15,8 @@
 
 <nav>
     <ul>
-        <li><a>Test</a></li>
-        <li><a>Essai</a></li>
+        <li><a href="${pageContext.request.contextPath}/afficheAgences">Agences</a></li>
+        <li><a href="${pageContext.request.contextPath}/mesCoffres">Mes Coffres</a></li>
         <li><a href="/index.jsp">Se connecter</a></li>
     </ul>
 </nav>

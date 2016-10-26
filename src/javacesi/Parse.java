@@ -63,6 +63,7 @@ public class Parse {
                                 coffre.setIdCoffre(coffreXML.idCoffre);
                                 coffre.setObjets(coffreXML.contenu);
                                 coffre.setTypeCoffre(coffreXML.typeCoffre);
+                                coffre.setLocalisation(coffreXML.piece);
                                 client.addCoffre(coffre);
                             }
                         }

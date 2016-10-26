@@ -13,8 +13,9 @@
 
     <servlet-mapping>
         <servlet-name>Coffre</servlet-name>
-        <url-pattern>/afficheCoffres</url-pattern>
+        <url-pattern>/afficheAgences</url-pattern>
         <url-pattern>/enregistreCoffre</url-pattern>
+        <url-pattern>/mesCoffres</url-pattern>
     </servlet-mapping>
 
     <servlet>

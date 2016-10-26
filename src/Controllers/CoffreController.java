@@ -7,10 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by Amanite on 24/10/2016.
@@ -19,7 +16,16 @@ public class CoffreController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req,HttpServletResponse resp) throws IOException,ServletException {
-        this.processRequest(req, resp);
+        String path = req.getServletPath();
+        if(Objects.equals(path, "/afficheAgences")) {
+            this.afficheAgences(req, resp);
+        }
+        if( path.toLowerCase().contains("/ajoutCoffre".toLowerCase()) ){
+            this.vueAjoutCoffre(req, resp);
+        }
+        if( path.toLowerCase().contains("/mesCoffres".toLowerCase()) ){
+            this.mesCoffres(req, resp);
+        }
     }
 
     @Override
@@ -30,28 +36,18 @@ public class CoffreController extends HttpServlet {
                 this.enregistreCoffre(req, resp, Integer.parseInt(req.getParameter("id_client")));
                 break;
             default:
-                req.getRequestDispatcher("coffres.jsp").forward(req, resp);
+                req.getRequestDispatcher("agences.jsp").forward(req, resp);
                 break;
         }
     }
 
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String path = req.getServletPath();
-        if(Objects.equals(path, "/afficheCoffres")) {
-            this.afficheCoffre(req, resp);
-        }
-        if( path.toLowerCase().contains("/ajoutCoffre".toLowerCase()) ){
-            this.vueAjoutCoffre(req, resp);
-        }
-    }
-
-    public void afficheCoffre(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void afficheAgences(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String relativeWebPath = "outputs/banque.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
         ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
         req.setAttribute("agences", ag);
-        req.setAttribute("title", "Liste des coffres");
-        req.getRequestDispatcher("coffres.jsp").forward(req, resp);
+        req.setAttribute("title", "Agences");
+        req.getRequestDispatcher("agences.jsp").forward(req, resp);
     }
 
     public void vueAjoutCoffre(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -79,6 +75,26 @@ public class CoffreController extends HttpServlet {
             }
         }
         req.setAttribute("agences", ag);
+        req.setAttribute("title", "Liste des coffres");
+        req.getRequestDispatcher("agences.jsp").forward(req, resp);
+    }
+
+    public void mesCoffres(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id_client = 1;
+        String relativeWebPath = "outputs/banque.xml";
+        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+        ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
+        List<Coffre> coffres = new ArrayList<Coffre>();
+
+        for (Agence agence : ag) {
+            for (ClientBanque client : agence.getClients()) {
+                if(client.getIdClient() == id_client)
+                {
+                    coffres = client.getCoffres();
+                }
+            }
+        }
+        req.setAttribute("coffres", coffres);
         req.setAttribute("title", "Liste des coffres");
         req.getRequestDispatcher("coffres.jsp").forward(req, resp);
     }
