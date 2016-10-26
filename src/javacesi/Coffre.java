@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Coffre implements ICrud
 {
-    private int id;
+    private int idCoffre;
     private String localisation;
     private String typeCoffre;
     private String typeSecurite;
@@ -26,7 +26,7 @@ public class Coffre implements ICrud
 
     public Coffre(int id, String loc, String typec, String types, ClientBanque cl, double montant, List<Operation> lesOperations)
     {
-        this.id = id;
+        this.idCoffre = id;
         this.localisation = loc;
         this.typeCoffre = typec;
         this.typeSecurite = types;
@@ -41,9 +41,9 @@ public class Coffre implements ICrud
     }
 
     //getter
-    public int getId()
+    public int getIdCoffre()
     {
-        return this.id;
+        return this.idCoffre;
     }
 
     public String getLocalisation()
@@ -118,9 +118,9 @@ public class Coffre implements ICrud
 
     //setter
 
-    public void setId(int identifiant)
+    public void setIdCoffre(int identifiant)
     {
-        this.id = identifiant;
+        this.idCoffre = identifiant;
     }
 
     public void setLocalisation(String loc)
@@ -167,7 +167,7 @@ public class Coffre implements ICrud
 
     public void afficheOperations()
     {
-        System.out.println("Liste des opérations du coffre n°" + this.id);
+        System.out.println("Liste des opérations du coffre n°" + this.idCoffre);
         if(this.getOperations() != null && this.getOperations().size() > 0)
         {
             for(Operation operation : this.getOperations())
@@ -186,7 +186,7 @@ public class Coffre implements ICrud
 
     public void afficheCoffre()
     {
-        System.out.println("Coffre n°"+this.id);
+        System.out.println("Coffre n°"+this.idCoffre);
         System.out.println("Type : "+this.typeCoffre);
         System.out.println("Sécurité : "+this.typeSecurite);
         System.out.println("Montant : "+this.montant+ "€");
@@ -205,7 +205,7 @@ public class Coffre implements ICrud
 
     @Override
     public void Read() throws AlsCustomException {
-        if (this.id == 0)
+        if (this.idCoffre == 0)
         {
             // throw our custom exception
             throw new AlsCustomException("Le coffre n'existe pas");
@@ -218,7 +218,7 @@ public class Coffre implements ICrud
 
     @Override
     public void Update() throws AlsCustomException {
-        if (this.id == 0)
+        if (this.idCoffre == 0)
         {
             // throw our custom exception
             throw new AlsCustomException("Le coffre n'existe pas");
@@ -231,7 +231,7 @@ public class Coffre implements ICrud
 
     @Override
     public void Delete() throws AlsCustomException {
-        if (this.id == 0)
+        if (this.idCoffre == 0)
         {
             // throw our custom exception
             throw new AlsCustomException("Le coffre n'existe pas");

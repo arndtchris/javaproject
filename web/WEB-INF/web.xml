@@ -14,7 +14,7 @@
     <servlet-mapping>
         <servlet-name>Coffre</servlet-name>
         <url-pattern>/afficheCoffres</url-pattern>
-        <url-pattern>/ajoutCoffre</url-pattern>
+        <url-pattern>/enregistreCoffre</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -36,4 +36,17 @@
         <servlet-name>Frais</servlet-name>
         <url-pattern>/frais</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>Filter</filter-name>
+        <filter-class>Controllers.filter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Filter</filter-name>
+        <url-pattern>/ajoutCoffre/*</url-pattern>
+    </filter-mapping>
+
+
+
 </web-app>

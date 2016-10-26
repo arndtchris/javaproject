@@ -3,9 +3,8 @@ package javacesi;
 /**
  * Created by chris on 03/10/2016.
  */
-public class Individu implements ICrud {
+public class Individu{
 
-    private int id;
     private String nom;
     private String prenom;
     private String adresse;
@@ -16,18 +15,13 @@ public class Individu implements ICrud {
 
     }
 
-    public Individu(int id, String nm, String pn, Agence agr)
+    public Individu(String nm, String pn, Agence agr)
     {
-        this.id = id;
         this.nom = nm;
         this.prenom = pn;
         this.agenceRattachement = agr;
     }
 
-    public int getId()
-    {
-        return this.id;
-    }
 
     public String getNom()
     {
@@ -49,12 +43,6 @@ public class Individu implements ICrud {
         return this.adresse;
     }
 
-
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
     public void setNom(String nm)
     {
         this.nom = nm;
@@ -73,50 +61,5 @@ public class Individu implements ICrud {
     public void setAdresse(String adresse)
     {
         this.adresse = adresse;
-    }
-
-
-    @Override
-    public void Create() {
-
-    }
-
-    @Override
-    public void Read() throws AlsCustomException {
-        if (this.id == 0)
-        {
-            // throw our custom exception
-            throw new AlsCustomException("Cette personne n'est pas enregistrée");
-        }
-        else
-        {
-            System.out.println("Je décris la personne");
-        }
-    }
-
-    @Override
-    public void Update() throws AlsCustomException {
-        if (this.id == 0)
-        {
-            // throw our custom exception
-            throw new AlsCustomException("Cette personne n'est pas enregistrée");
-        }
-        else
-        {
-            System.out.println("Le profil a été modifié");
-        }
-    }
-
-    @Override
-    public void Delete() throws AlsCustomException {
-        if (this.id == 0)
-        {
-            // throw our custom exception
-            throw new AlsCustomException("Cette personne n'est pas enregistrée");
-        }
-        else
-        {
-            System.out.println("Le profil a été supprimé");
-        }
     }
 }

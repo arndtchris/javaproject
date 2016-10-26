@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Agences>
     <AgenceXML>
+        <idAgence>1</idAgence>
         <Nom>Luxembourg Centre</Nom>
         <Adresse>Luxembourg, Luxembourg-ville, la place d'Armes|Plass d'Arem</Adresse>
         <listeClient>
             <ClientBanqueXML>
+                <idClient>1</idClient>
                 <prenom>Chantal</prenom>
                 <nom>DUPOND</nom>
                 <adresse>1 r des Financiers, LUXEMBOURG, L-1530</adresse>
                 <Coffres>
                     <CoffreXML>
+                        <idCoffre>1</idCoffre>
                         <typeCoffre>Coffre-fort</typeCoffre>
                         <dateOuverture>15/06/2016</dateOuverture>
                         <dateFermeture>15/10/2016</dateFermeture>
@@ -19,11 +22,13 @@
                 </Coffres>
             </ClientBanqueXML>
             <ClientBanqueXML>
+                <idClient>2</idClient>
                 <prenom>Maurice</prenom>
                 <nom>DUPOND</nom>
                 <adresse>1 r des Financiers, LUXEMBOURG, L-1530</adresse>
                 <Coffres>
                     <CoffreXML>
+                        <idCoffre>2</idCoffre>
                         <typeCoffre>Armoire forte</typeCoffre>
                         <dateOuverture>01/10/2016</dateOuverture>
                         <dateFermeture>01/10/2016</dateFermeture>
@@ -33,6 +38,7 @@
                 </Coffres>
             </ClientBanqueXML>
             <ClientBanqueXML>
+                <idClient>3</idClient>
                 <prenom>Etienne</prenom>
                 <nom>JOUVET</nom>
                 <adresse>11 quai de la Gare, METZ, F-57000</adresse>
@@ -40,6 +46,7 @@
         </listeClient>
     </AgenceXML>
     <AgenceXML>
+        <idAgence>2</idAgence>
         <Nom>Metz quartier Gare</Nom>
 		<Adresse>France, Metz-ville, place de la Gare (entrepôt unique)</Adresse>
 	</AgenceXML>

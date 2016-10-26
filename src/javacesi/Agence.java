@@ -6,7 +6,7 @@ public class Agence extends Etablissement
 {
 
     private ArrayList<Coffre> listeCoffre;
-
+    private int idAgence;
 
     /**
      * Constructeur vide de la classe Agence. Instancie les listes ListeCoffre et ListeClient.
@@ -34,5 +34,13 @@ public class Agence extends Etablissement
     public ArrayList<Coffre> GetListeCoffre()
     {
         return listeCoffre;
+    }
+
+    public int getIdAgence() {
+        return idAgence;
+    }
+
+    public void setIdAgence(int idAgence) {
+        this.idAgence = idAgence;
     }
 }

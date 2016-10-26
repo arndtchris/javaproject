@@ -46,18 +46,21 @@ public class Parse {
 
             for (AgenceXML agenceXML: lesAgences) {
                 Agence agence = new Agence();
+                agence.setIdAgence(agenceXML.idAgence);
                 agence.setAdresseEtab(agenceXML.Adresse);
                 agence.setNomEtab(agenceXML.Nom);
                 if(agenceXML.listeClient != null){
                     for(ClientBanqueXML clientXML : agenceXML.listeClient)
                     {
                         ClientBanque client = new ClientBanque();
+                        client.setIdClient(clientXML.idClient);
                         client.setAdresse(clientXML.adresse);
                         client.setNom(clientXML.nom);
                         client.setPrenom(clientXML.prenom);
                         if(clientXML.Coffres != null){
                             for (CoffreXML coffreXML : clientXML.Coffres){
                                 Coffre coffre = new Coffre();
+                                coffre.setIdCoffre(coffreXML.idCoffre);
                                 coffre.setObjets(coffreXML.contenu);
                                 coffre.setTypeCoffre(coffreXML.typeCoffre);
                                 client.addCoffre(coffre);

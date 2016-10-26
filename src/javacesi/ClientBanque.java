@@ -13,15 +13,16 @@ public class ClientBanque extends Individu
 {
 
 	private ArrayList<Coffre> coffres;
+    private int idClient;
 	
 	// Constructeurs
-	public ClientBanque(int id, String nm, String pn, Agence agr) {
-		super(id,nm,pn,agr);
+	public ClientBanque(String nm, String pn, Agence agr) {
+		super(nm,pn,agr);
 	}
 
     public ClientBanque(int id, String nm, String pn, Agence agr, Coffre cfr) {
         coffres = new ArrayList<Coffre>();
-        this.setId(id);
+        this.setIdClient(id);
         this.setNom(nm);
         this.setPrenom(pn);
         this.setAgenceRattachement(agr);
@@ -61,5 +62,13 @@ public class ClientBanque extends Individu
     public String toString() 
     {
 		return this.getPrenom() + " " + this.getNom();
+    }
+
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
 }

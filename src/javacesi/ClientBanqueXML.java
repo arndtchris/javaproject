@@ -10,7 +10,7 @@ import java.util.List;
  * Created by chris on 06/10/2016.
  */
 @XmlRootElement(name = "ClientBanqueXML")
-@XmlType(propOrder = {"prenom","nom","adresse","Coffres"})
+@XmlType(propOrder = {"prenom","nom","adresse","Coffres", "idClient"})
 public class ClientBanqueXML {
 
     @XmlElement(name = "prenom")
@@ -19,6 +19,8 @@ public class ClientBanqueXML {
     public String nom;
     @XmlElement(name = "adresse")
     public String adresse;
+    @XmlElement(name = "idClient")
+    public int idClient;
     @XmlElementWrapper(name = "Coffres")
     @XmlElement(name = "CoffreXML")
     public List<CoffreXML> Coffres;
