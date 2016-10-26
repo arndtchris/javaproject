@@ -46,7 +46,10 @@ public final class ConnexionForm {
 
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
-            resultat = "<font color = 'green'> Succès de la connexion. </font>";
+            resultat = "<font color = 'green'> Succès de la connexion. </font>" +
+                    " <script type='text/javascript'>" +
+                    "            window.location.href = '/frais'" +
+                    "        </script>";
         } else {
             resultat = "<font color = 'red'>Échec de la connexion. </font> ";
         }
