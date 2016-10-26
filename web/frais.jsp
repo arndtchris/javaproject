@@ -39,7 +39,15 @@
                                     <c:param name="fraisID" value="${f.idFrais}"/>
                                 </c:url>
                             </c:set>
-                            <a class="btn btn-warning fa fa-pencil" href="${editURL}" role="button">Modifier</a>
+                            <a class="btn btn-warning fa fa-pencil" href="${editURL}" role="button"> Modifier</a>
+
+                            <c:set var="deleteURL">
+                                <c:url value="supprimerFrais/">
+                                    <c:param name="fraisID" value="${f.idFrais}"/>
+                                </c:url>
+                            </c:set>
+                            <a class="btn btn-danger fa fa-trash" href="${deleteURL}" role="button"> Supprimer</a>
+
                         </div>
                     </div>
 

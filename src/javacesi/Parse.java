@@ -340,6 +340,39 @@ public class Parse {
 
     }
 
+    public ArrayList<FraisXML> supprimeFrais(String fullPathToFile,String fraisID)
+    {
+
+        ArrayList<FraisXML> lesFrais = this.parseFrais(fullPathToFile);
+        Integer fraisToRemove = 0;
+
+        for (int j = 0; j < lesFrais.size(); j++) {
+
+            if(lesFrais.get(j).IdOperation.equals(fraisID))
+            {
+                Iterator<FraisXML> inter = new
+                fraisToRemove = j;
+            }
+
+        }
+        lesFrais.remove(fraisToRemove);
+
+
+        try {
+            FraisXMLs operas = new FraisXMLs();
+            JAXBContext jc2 = JAXBContext.newInstance(FraisXMLs.class);
+            Marshaller marshaller = jc2.createMarshaller();
+
+            operas.operations = lesFrais;
+            marshaller.marshal(operas, new File(fullPathToFile));
+
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        return this.parseFrais(fullPathToFile);
+    }
+
     public ArrayList<FraisXML> parseFrais(String fullPathToFile)
     {
 

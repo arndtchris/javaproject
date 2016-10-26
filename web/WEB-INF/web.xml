@@ -40,6 +40,18 @@
     </servlet-mapping>
 
     <filter>
+        <filter-name>Frais</filter-name>
+        <filter-class>Controllers.FraisController</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Frais</filter-name>
+        <url-pattern>/supprimerFrais/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <filter>
         <filter-name>Filter</filter-name>
         <filter-class>Controllers.filter</filter-class>
     </filter>
