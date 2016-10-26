@@ -20,7 +20,7 @@
                           <ul class="ClientCoffre">
                               <li> + <a href="${pageContext.request.contextPath}/ajoutCoffre/${client.idClient}">Ajouter un coffre</a></li>
                               <c:forEach items="${client.coffres}" var="coffre">
-                                  <li>${coffre.typeCoffre}</li>
+                                  <li><a href="${pageContext.request.contextPath}/coffre/${coffre.idCoffre}">${coffre.typeCoffre}</a></li>
                               </c:forEach>
                           </ul>
                       </div>

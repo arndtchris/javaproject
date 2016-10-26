@@ -1,5 +1,9 @@
 package Controllers;
 
+import javacesi.Agence;
+import javacesi.Coffre;
+import javacesi.Parse;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +34,26 @@ public class filter implements Filter {
             req.setAttribute("title", "Ajouter un coffre");
             req.setAttribute("id_client", id);
             RequestDispatcher RequetsDispatcherObj = req.getServletContext().getRequestDispatcher("/addCoffre.jsp");
+            RequetsDispatcherObj.forward(request, response);
+        }
+
+        if( url.toLowerCase().contains("/afficheCoffre".toLowerCase()) ){
+            int id = Integer.parseInt(url.replace("/afficheCoffre/",""));
+            Coffre c = new Coffre();
+            req.setAttribute("title", "Ajouter un coffre");
+            req.setAttribute("id_client", id);
+            RequestDispatcher RequetsDispatcherObj = req.getServletContext().getRequestDispatcher("/addCoffre.jsp");
+            RequetsDispatcherObj.forward(request, response);
+        }
+
+        if( url.toLowerCase().contains("/coffre".toLowerCase()) ){
+            String id = url.replace("/coffre/","");
+            String relativeWebPath = "outputs/banque.xml";
+            String absoluteDiskPath = req.getServletContext().getRealPath(relativeWebPath);
+            Coffre c = new Parse().CoffreById(absoluteDiskPath,id);
+            req.setAttribute("coffre", c);
+            req.setAttribute("title", "Détail du coffre");
+            RequestDispatcher RequetsDispatcherObj = req.getServletContext().getRequestDispatcher("/coffre.jsp");
             RequetsDispatcherObj.forward(request, response);
         }
 

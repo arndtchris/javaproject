@@ -396,7 +396,7 @@ public class Parse {
             {
                 JAXBElement<FraisXML> je = unmarshaller.unmarshal(nodes.item(i), FraisXML.class);
                 FraisXML op = je.getValue();
-                if(op.IdOperation.toString().equals(id))
+                if(op.IdOperation.equals(id))
                 {
                     fraisToReturn = op;
                 }
@@ -415,6 +415,50 @@ public class Parse {
         }
 
         return new Frais(fraisToReturn);
+    }
+
+    public Coffre CoffreById(String fullPathToFile, String id)
+    {
+        File file = new File(fullPathToFile);
+        Coffre coffre = new Coffre();
+
+        try
+        {
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("CoffreXML");
+
+            JAXBContext jc = JAXBContext.newInstance(CoffreXML.class);
+
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for(int i = 0; i < nodes.getLength(); i++)
+            {
+                JAXBElement<CoffreXML> je = unmarshaller.unmarshal(nodes.item(i), CoffreXML.class);
+                CoffreXML co = je.getValue();
+                if(co.idCoffre.equals(id))
+                {
+                    coffre.setPiece(co.piece);
+                    coffre.setTypeCoffre(co.typeCoffre);
+                    coffre.setContenu(co.contenu);
+                    coffre.setDateOuverture(co.dateOuverture);
+                    coffre.setDateFermeture(co.dateFermeture);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+        return coffre;
     }
 
 
