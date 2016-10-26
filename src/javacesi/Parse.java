@@ -87,6 +87,62 @@ public class Parse {
         return agences;
     }
 
+    public ArrayList<Coffre> coffreBySelonClientID(String fullPathToFile, String clientID)
+    {
+        File file = new File(fullPathToFile);
+        CoffreXML coffreToReturn = new CoffreXML();
+        ArrayList<AgenceXML> lesAgences = new ArrayList<>();
+        ArrayList<Agence> agences = new ArrayList<Agence>();
+
+        ArrayList<Coffre> lesCoffresDuClient = new ArrayList<>();
+
+        try {
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("AgenceXML");
+
+            JAXBContext jc = JAXBContext.newInstance(AgenceXML.class);
+
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for (int i = 0; i < nodes.getLength(); i++) {
+                JAXBElement<AgenceXML> je = unmarshaller.unmarshal(nodes.item(i), AgenceXML.class);
+                AgenceXML ag = je.getValue();
+                lesAgences.add(ag);
+            }
+
+            for (AgenceXML agenceXML: lesAgences) {
+                if(agenceXML.listeClient != null){
+                    for(ClientBanqueXML clientXML : agenceXML.listeClient)
+                    {
+                        if(clientXML.idClient.equals(clientID))
+                        {
+                            if(clientXML.Coffres != null){
+                                for (CoffreXML coffreXML : clientXML.Coffres){
+                                    lesCoffresDuClient.add(new Coffre(coffreXML));
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+        return lesCoffresDuClient;
+    }
+
     public ArrayList<FraisXML> insertFrais(String fullPathToFile,FraisXML newFrais)
     {
         Integer newID = 0;
