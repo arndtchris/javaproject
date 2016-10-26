@@ -88,7 +88,7 @@ public class Parse {
         return agences;
     }
 
-    public ClientBanque ajouteCoffreAClient(String fullPathToFile, String clientID, CoffreXML coffreToAdd)
+    public ArrayList<Agence> ajouteCoffreAClient(String fullPathToFile, String clientID, CoffreXML coffreToAdd)
     {
         File file = new File(fullPathToFile);
         ClientBanque clientToReturn = new ClientBanque();
@@ -167,7 +167,7 @@ public class Parse {
             e.printStackTrace();
         }
 
-        return clientToReturn;
+        return parseAgence(fullPathToFile);
 
     }
 
