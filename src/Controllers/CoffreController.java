@@ -66,7 +66,7 @@ public class CoffreController extends HttpServlet {
 
         String relativeWebPath = "outputs/banque.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-        ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
+        ArrayList<Agence> ag = new Parse().ajouteCoffreAClient(absoluteDiskPath,"2",c);
         req.setAttribute("agences", ag);
         req.setAttribute("title", "Liste des coffres");
         req.getRequestDispatcher("agences.jsp").forward(req, resp);
