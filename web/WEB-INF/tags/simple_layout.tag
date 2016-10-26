@@ -22,8 +22,8 @@
 </head>
 <body>
 <p align="center"><a href="${pageContext.request.contextPath}/moncompte"><img src="images/bank.png" width="30" align="center"/><br />SuperBank</a></p>
-<nav>
-    <ul align="center">
+<nav align="center">
+    <ul>
         <li><a href="${pageContext.request.contextPath}/afficheAgences">Agences</a></li>
         <li><a href="${pageContext.request.contextPath}/mesCoffres">Mes Coffres</a></li>
         <li><a href="${pageContext.request.contextPath}/frais">Frais</a></li>
