@@ -30,8 +30,8 @@ public class Etablissement implements ICrud
 
     public void setIdEtab(int id){this.idEtab = id;}
     public void addClient(ClientBanque client){this.clients.add(client);}
+    public List<ClientBanque> getClient(){return this.clients;}
 
-    public ArrayList<ClientBanque> getClients() {return this.clients;}
 
     public String getAdresseEtab() {return adresseEtab;}
 
@@ -42,8 +42,6 @@ public class Etablissement implements ICrud
     public String getNomEtab(){return nomEtab;}
 
     public int getIdEtab(){return this.idEtab;}
-
-    public List<ClientBanque> getListClient(){return this.clients;}
 
     @Override
     public void Create() {

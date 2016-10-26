@@ -5,6 +5,7 @@
   Time: 09:26
   To change this template use File | Settings | File Templates.
 --%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="d"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
@@ -14,13 +15,25 @@
     </jsp:attribute>
 
 <jsp:body>
-    <p>La page des frais</p>
+    <h1>Catalogue des frais</h1>
 
-    <d:forEach items="${operations}" var="op">
-        <tr>
-            <td>Type Coffre: <d:out value="${op.TypeCoffre}"/></td>
-            <td>Période: <d:out value="${op.PeriodeLocation}"/></td>
-        </tr>
-    </d:forEach>
+    <form action="frais" method="post">
+        Type de coffre : <input type="text" name="typecoffre"> <br/>
+        Période de location : <input type="text" name="periodeLocation"> <br/>
+        Tarif de la période : <input type="text" name="prixPeriode"> <br/>
+        Devise : <input type="text" name="devise"> <br/>
+        <input type="submit" />
+    </form>
+
+    <div id="AgenceContainer" class="row">
+            <d:forEach items="${requestScope.lesfrais}" var="f">
+                <div class="col-lg-3">
+                    <div class="Client">
+                        <h3>${f.typecoffre}</h3>
+                        <p>${f.periodeLocation} : ${f.prixPeriode} ${f.devise} </p>
+                    </div>
+                </div>
+            </d:forEach>
+    </div>
 </jsp:body>
 </t:simple_layout>

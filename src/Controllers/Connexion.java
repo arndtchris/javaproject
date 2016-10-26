@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import javacesi.ClientBanque;
 import javacesi.ConnexionForm;
 
@@ -20,14 +21,18 @@ public class Connexion extends HttpServlet {
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Affichage de la page de connexion */
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Préparation de l'objet formulaire */
+
+
         ConnexionForm form = new ConnexionForm();
 
+
         /* Traitement de la requête et récupération du bean en résultant */
-        ClientBanque utilisateur = form.connecterUtilisateur( request );
+        ClientBanque utilisateur = form.connecterUtilisateur( request, response );
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();

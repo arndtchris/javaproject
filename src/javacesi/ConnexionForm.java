@@ -1,11 +1,16 @@
 package javacesi;
 
+
+import Controllers.Connexion;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.ServletContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import javacesi.ClientBanque;
 
 public final class ConnexionForm {
     private static final String CHAMP_NOM  = "nom";
@@ -22,15 +27,71 @@ public final class ConnexionForm {
         return erreurs;
     }
 
-    public ClientBanque connecterUtilisateur( HttpServletRequest request ) {
+    public ClientBanque connecterUtilisateur(HttpServletRequest request, HttpServletResponse resp ) {
         /* Récupération des champs du formulaire */
-        String email = getValeurChamp( request, CHAMP_NOM );
-        String motDePasse = getValeurChamp( request, CHAMP_PRENOM );
-
+        String nom = getValeurChamp( request, CHAMP_NOM );
+        String prenom = getValeurChamp( request, CHAMP_PRENOM );
+        String relativeWebPath = "outputs/banque.xml";
+        String absoluteDiskPath = request.getServletContext().getRealPath(relativeWebPath);
         ClientBanque utilisateur = new ClientBanque();
 
+        /* Validation du champ nom. */
+        try {
+            validationNom( nom, prenom, absoluteDiskPath );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_NOM, e.getMessage() );
+        }
+
+        /* Initialisation du résultat global de la validation. */
+        if ( erreurs.isEmpty() ) {
+            resultat = "Succès de la connexion.";
+        } else {
+            resultat = "Échec de la connexion.";
+        }
 
         return utilisateur;
+    }
+
+    /**
+     * Valide le nom et prénom saisis.
+     */
+    private void validationNom( String nom, String prenom, String abs ) throws Exception {
+        if ((nom != null) && (prenom != null))
+        {
+
+            ArrayList<Agence> agxml = new Parse().parseAgence(abs);
+
+            ArrayList<ClientBanque> clientxml = new ArrayList<ClientBanque>();
+            for(int j = 0; j<agxml.size(); j++)
+            {
+                clientxml.addAll(agxml.get(j).getClient());
+            }
+            Boolean trouve = false;
+            for(int i = 0; i< clientxml.size(); i++)
+            {
+                if (!(nom.equals(clientxml.get(i).getNom())) && !(prenom.equals(clientxml.get(i).getPrenom())))
+                {
+                    if (trouve == false)
+                    {
+                        throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+                    }
+                }
+                else
+                {
+                    trouve = true;
+                }
+            }
+            if (trouve == false)
+            {
+                throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+            }
+        }
+        else
+        {
+            throw new Exception( "Les champs sont obligatoires !" );
+
+        }
+
     }
 
 
@@ -54,4 +115,5 @@ public final class ConnexionForm {
             return valeur;
         }
     }
+
 }

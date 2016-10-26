@@ -10,68 +10,39 @@ import java.util.Date;
  */
 public class Frais implements ICrud
 {
-
 	private Integer IdFrais;
-	private String TypeCoffre;
-	private String PeriodeLocation;
-	private String PrixPeriode;
-	private String Devise;
+	private String typecoffre;
+	private String periodeLocation;
+	private String prixPeriode;
+	private String devise;
 
 	public Frais() {
 	}
 
 	public Frais(FraisXML f)
 	{
-		this.TypeCoffre = f.TypeCoffre;
-		this.Devise = f.Devise;
-		this.PeriodeLocation = f.PeriodeLocation;
-		this.PrixPeriode = f.PrixPeriode;
+		this.typecoffre = f.TypeCoffre;
+		this.devise = f.Devise;
+		this.periodeLocation = f.PeriodeLocation;
+		this.prixPeriode = f.PrixPeriode;
 	}
 
 	public Frais(Integer aIdFrais, String typeCoffre, String periodeLocation, String prixPeriode,String devise) {
 		this.IdFrais = aIdFrais;
-		this.TypeCoffre = typeCoffre;
-		this.PeriodeLocation = periodeLocation;
-		this.PrixPeriode = prixPeriode;
-		this.Devise = devise;
+		this.typecoffre = typeCoffre;
+		this.periodeLocation = periodeLocation;
+		this.prixPeriode = prixPeriode;
+		this.devise = devise;
 	}
 
-	public void SetIdFrais(Integer IdFrais) {
-		this.IdFrais = IdFrais;
+	public Frais(String typeCoffre, String periodeLocation, String prixPeriode,String devise) {
+		this.typecoffre = typeCoffre;
+		this.periodeLocation = periodeLocation;
+		this.prixPeriode = prixPeriode;
+		this.devise = devise;
 	}
 
-	public Integer GetIdFrais() {
-		return IdFrais;
-	}
 
-	public void SetTypeCoffre(String typeCoffre) {
-		this.TypeCoffre = typeCoffre;
-	}
-
-	public String GetTypeCoffre() {
-		return this.TypeCoffre;
-	}
-
-	public void SetPeriodeLocation(String periode) {
-		this.PeriodeLocation = periode;
-	}
-
-	public String GetPeriodeLocation()
-	{
-		return this.PeriodeLocation;
-	}
-
-	public String GetPrixPeriode() {
-		return this.PrixPeriode;
-	}
-
-	public void SetDevise(String dev) {
-		this.Devise = dev;
-	}
-
-	public String GetDevise() {
-		return this.Devise;
-	}
 
 	@Override
 	public void Create() {
@@ -115,5 +86,47 @@ public class Frais implements ICrud
 		{
 			System.out.println("Frais supprimé");
 		}
+	}
+
+	public String getTypecoffre() {
+		return typecoffre;
+	}
+
+	public void setTypecoffre(String typecoffre) {
+		this.typecoffre = typecoffre;
+	}
+
+	public String getPeriodeLocation() {
+		return periodeLocation;
+	}
+
+	public void setPeriodeLocation(String periodeLocation) {
+		periodeLocation = periodeLocation;
+	}
+
+	public String getPrixPeriode() {
+		return prixPeriode;
+	}
+
+	public void setPrixPeriode(String prixPeriode) {
+		prixPeriode = prixPeriode;
+	}
+
+	public String getDevise() {
+		return devise;
+	}
+
+	public void setDevise(String devise) {
+		devise = devise;
+	}
+
+	public void setIdFrais(Integer id)
+	{
+		IdFrais = id;
+	}
+
+	public Integer getIdFrais()
+	{
+		return IdFrais;
 	}
 }

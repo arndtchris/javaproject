@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * Created by chris on 04/10/2016.
  */
-@XmlRootElement(name = "OperationXMLs")
-public class OperationXMLs {
-    @XmlElement(name = "OperationXML")
-    public List<OperationXML> operations;
+@XmlRootElement(name = "FraisXMLs")
+public class FraisXMLs {
+    @XmlElement(name = "FraisXML")
+    public List<FraisXML> operations;
 }
