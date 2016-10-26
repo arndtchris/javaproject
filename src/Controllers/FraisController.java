@@ -21,11 +21,17 @@ public class FraisController extends HttpServlet {
         String periodeLocation = request.getParameter("periodeLocation");
         String prixPeriode = request.getParameter("prixPeriode");
         String devise = request.getParameter("devise");
+        String idFrais = request.getParameter("idFrais");
 
         String relativeWebPath = "outputs/Cataloguefrais2016.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
 
         FraisXML fr = new FraisXML(typecoffre,periodeLocation,prixPeriode,devise);
+
+        if(idFrais != null && idFrais != null)
+        {
+            fr.IdOperation = idFrais;
+        }
 
         ArrayList<FraisXML> lesFraisXML = new Parse().insertFrais(absoluteDiskPath,fr);
         ArrayList<Frais> lesFrais = new ArrayList<Frais>();
@@ -42,6 +48,8 @@ public class FraisController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String fraisID = request.getParameter("fraisID");
+
         String relativeWebPath = "outputs/Cataloguefrais2016.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
 
@@ -53,7 +61,14 @@ public class FraisController extends HttpServlet {
             lesFrais.add(new Frais(f));
         }
 
+        if(fraisID != null && fraisID != "")
+        {
+            Frais fraisToEdit = new Parse().fraisById(absoluteDiskPath,fraisID);
+            request.setAttribute("fraisToEdit", fraisToEdit);
+        }
+
         request.setAttribute("lesfrais", lesFrais);
+
 
         request.getRequestDispatcher("frais.jsp").forward(request, response);
     }

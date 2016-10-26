@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Frais implements ICrud
 {
-	private Integer IdFrais;
+	private Integer idFrais;
 	private String typecoffre;
 	private String periodeLocation;
 	private String prixPeriode;
@@ -25,10 +25,11 @@ public class Frais implements ICrud
 		this.devise = f.Devise;
 		this.periodeLocation = f.PeriodeLocation;
 		this.prixPeriode = f.PrixPeriode;
+		this.idFrais = Integer.parseInt(f.IdOperation);
 	}
 
 	public Frais(Integer aIdFrais, String typeCoffre, String periodeLocation, String prixPeriode,String devise) {
-		this.IdFrais = aIdFrais;
+		this.idFrais = aIdFrais;
 		this.typecoffre = typeCoffre;
 		this.periodeLocation = periodeLocation;
 		this.prixPeriode = prixPeriode;
@@ -51,7 +52,7 @@ public class Frais implements ICrud
 
 	@Override
 	public void Read() throws AlsCustomException {
-		if (this.IdFrais == 0)
+		if (this.idFrais == 0)
 		{
 			// throw our custom exception
 			throw new AlsCustomException("Ce frais n'existe pas");
@@ -64,7 +65,7 @@ public class Frais implements ICrud
 
 	@Override
 	public void Update() throws AlsCustomException {
-		if (this.IdFrais == 0)
+		if (this.idFrais == 0)
 		{
 			// throw our custom exception
 			throw new AlsCustomException("Ce frais n'existe pas");
@@ -77,7 +78,7 @@ public class Frais implements ICrud
 
 	@Override
 	public void Delete() throws AlsCustomException {
-		if (this.IdFrais == 0)
+		if (this.idFrais == 0)
 		{
 			// throw our custom exception
 			throw new AlsCustomException("Ce frais n'existe pas");
@@ -122,11 +123,11 @@ public class Frais implements ICrud
 
 	public void setIdFrais(Integer id)
 	{
-		IdFrais = id;
+		idFrais = id;
 	}
 
 	public Integer getIdFrais()
 	{
-		return IdFrais;
+		return idFrais;
 	}
 }
