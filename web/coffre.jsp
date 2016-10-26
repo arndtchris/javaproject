@@ -6,14 +6,14 @@
         <div class="row">
             <h1>${title}</h1>
             <div class="Agence row">
-                <div class="col-lg-3">
-                    <div class="Coffre">
+                <div class="col-lg-12">
+                    <div>
                         <h3>${coffre.typeCoffre}</h3>
                         <p>Contenu : ${coffre.contenu}</p>
                         <p>Localisation : ${coffre.piece}</p>
                         <p>Début de réservation : ${coffre.dateOuverture}</p>
                         <p>Fin de réservation : ${coffre.dateFermeture}</p>
-                        <a class="btn btn-warning fa fa-trash" href="${pageContext.request.contextPath}/supprimerCoffre/${coffre.idCoffre}" role="button"> Supprimer</a>
+                        <a class="btn btn-danger fa fa-trash" href="${pageContext.request.contextPath}/supprimerCoffre/${coffre.idCoffre}" role="button"> Supprimer</a>
                     </div>
                 </div>
             </div>
