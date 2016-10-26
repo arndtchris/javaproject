@@ -48,6 +48,7 @@
         <filter-name>Filter</filter-name>
         <url-pattern>/ajoutCoffre/*</url-pattern>
         <url-pattern>/coffre/*</url-pattern>
+        <url-pattern>/supprimerCoffre/*</url-pattern>
     </filter-mapping>
 
 

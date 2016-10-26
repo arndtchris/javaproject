@@ -57,6 +57,11 @@ public class filter implements Filter {
             RequetsDispatcherObj.forward(request, response);
         }
 
+        if( url.toLowerCase().contains("/supprimerCoffre".toLowerCase()) ){
+            String id = url.replace("/supprimerCoffre/","");
+            //Dostuff
+        }
+
         chain.doFilter(req, res);
     }
 
