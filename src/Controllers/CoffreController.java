@@ -73,22 +73,29 @@ public class CoffreController extends HttpServlet {
     }
 
     public void mesCoffres(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id_client = 1;
-        String relativeWebPath = "outputs/banque.xml";
-        String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-        ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
-        List<Coffre> coffres = new ArrayList<Coffre>();
+        HttpSession session = req.getSession(true);
+        ClientBanque SessionClient = (ClientBanque)session.getAttribute("sessionUtilisateur");
+        if(SessionClient == null){
+            resp.sendRedirect("/connexion");
+        }else{
+            int id_client = SessionClient.getIdClient();
+            String relativeWebPath = "outputs/banque.xml";
+            String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+            ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
+            List<Coffre> coffres = new ArrayList<Coffre>();
 
-        for (Agence agence : ag) {
-            for (ClientBanque client : agence.getClients()) {
-                if(client.getIdClient() == id_client)
-                {
-                    coffres = client.getCoffres();
+            for (Agence agence : ag) {
+                for (ClientBanque cl : agence.getClients()) {
+                    if(cl.getIdClient() == id_client)
+                    {
+                        coffres = cl.getCoffres();
+                    }
                 }
             }
+            req.setAttribute("coffres", coffres);
+            req.setAttribute("title", "Liste des coffres");
+            req.getRequestDispatcher("coffres.jsp").forward(req, resp);
         }
-        req.setAttribute("coffres", coffres);
-        req.setAttribute("title", "Liste des coffres");
-        req.getRequestDispatcher("coffres.jsp").forward(req, resp);
+
     }
 }

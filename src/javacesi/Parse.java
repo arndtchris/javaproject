@@ -227,7 +227,7 @@ public class Parse {
             e.printStackTrace();
         }
 
-        return nextID;
+        return nextID + 1;
     }
 
     public ArrayList<Coffre> coffreBySelonClientID(String fullPathToFile, String clientID)
