@@ -117,7 +117,6 @@ public class Parse {
                     {
                         if(clientXML.idClient.equals(clientID))
                         {
-                            if(clientXML.Coffres != null){
 
                                 if(coffreToAdd.idCoffre != "" && coffreToAdd.idCoffre != null)
                                 {
@@ -132,12 +131,15 @@ public class Parse {
                                             coffre.typeCoffre  =coffreToAdd.typeCoffre;
                                         }
                                     }
-                                }else
-                                {
+                                }else {
                                     coffreToAdd.idCoffre = nextCoffreID(fullPathToFile).toString();
+                                    if(clientXML.Coffres == null)
+                                    {
+                                        clientXML.Coffres = new ArrayList<CoffreXML>();
+                                    }
+
                                     clientXML.Coffres.add(coffreToAdd);
                                 }
-                            }
                         }
                     }
                 }

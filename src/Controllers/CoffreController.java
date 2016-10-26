@@ -33,7 +33,7 @@ public class CoffreController extends HttpServlet {
         String path = req.getServletPath();
         switch (path) {
             case "/enregistreCoffre":
-                this.enregistreCoffre(req, resp, Integer.parseInt(req.getParameter("id_client")));
+                this.enregistreCoffre(req, resp, req.getParameter("id_client"));
                 break;
             default:
                 req.getRequestDispatcher("agences.jsp").forward(req, resp);
@@ -56,7 +56,7 @@ public class CoffreController extends HttpServlet {
         RequetsDispatcherObj.forward(req, resp);
     }
 
-    public void enregistreCoffre(HttpServletRequest req, HttpServletResponse resp, int id_client) throws ServletException, IOException {
+    public void enregistreCoffre(HttpServletRequest req, HttpServletResponse resp, String id_client) throws ServletException, IOException {
         CoffreXML c = new CoffreXML();
         c.typeCoffre = req.getParameter("TypeCoffre") ;
         c.piece = req.getParameter("Piece");
@@ -66,7 +66,7 @@ public class CoffreController extends HttpServlet {
 
         String relativeWebPath = "outputs/banque.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
-        ArrayList<Agence> ag = new Parse().ajouteCoffreAClient(absoluteDiskPath,"2",c);
+        ArrayList<Agence> ag = new Parse().ajouteCoffreAClient(absoluteDiskPath,id_client,c);
         req.setAttribute("agences", ag);
         req.setAttribute("title", "Liste des coffres");
         req.getRequestDispatcher("agences.jsp").forward(req, resp);
