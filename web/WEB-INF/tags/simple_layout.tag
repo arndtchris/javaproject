@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-
+<p align="center"><a href="${pageContext.request.contextPath}/moncompte"><img src="images/bank.png" width="30" align="center"/><br />SuperBank</a></p>
 <nav>
     <ul>
         <li><a href="${pageContext.request.contextPath}/afficheAgences">Agences</a></li>
