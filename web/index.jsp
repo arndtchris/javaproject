@@ -14,12 +14,12 @@
         <form method="post" action="connexion">
             <fieldset>
                 <p><h1>Vous pouvez vous connecter via ce formulaire.</h1></p>
-
+                <br />
                 <table align = center>
 
                 <tr>
                     <td>
-                        <label for="nom">Nom <span class="requis">*</span></label>
+                        <label for="nom">Nom <span class="requis"><font color ="red">*</font></span></label>
                     </td>
                     <td>
                         <input type="text" id="nom" name="nom" value="" size="20" maxlength="60" />
@@ -29,21 +29,18 @@
 
                 <tr>
                     <td>
-                        <label for="prenom">Prénom <span class="requis">*</span></label>
+                        <label for="prenom">Prénom <span class="requis"><font color ="red">*</font></span></label>
                     </td>
                     <td>
                         <input type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" />
                     </td>
                 <span class="erreur">${form.erreurs['prenom']}</span>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="submit" value="Connexion" class="sansLabel" />
-                    </td>
-                </tr>
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
             </fieldset>
             </table>
+            <br />
+            <input type="submit" value="Connexion" class="sansLabel" align="center" />
         </form>
 
     </jsp:body>
