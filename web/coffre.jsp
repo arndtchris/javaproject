@@ -5,7 +5,7 @@
     <jsp:body>
         <div class="row">
             <h1>${title}</h1>
-            <div class="DetailCoffre row">
+            <div class="Agence row">
                 <div class="col-lg-3">
                     <div class="Coffre">
                         <h3>${coffre.typeCoffre}</h3>

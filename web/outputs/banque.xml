@@ -37,6 +37,13 @@
                     </CoffreXML>
                 </Coffres>
             </ClientBanqueXML>
+        </listeClient>
+    </AgenceXML>
+    <AgenceXML>
+        <idAgence>2</idAgence>
+        <Nom>Metz quartier Gare</Nom>
+		<Adresse>France, Metz-ville, place de la Gare (entrepôt unique)</Adresse>
+        <listeClient>
             <ClientBanqueXML>
                 <idClient>3</idClient>
                 <prenom>Etienne</prenom>
@@ -44,10 +51,5 @@
                 <adresse>11 quai de la Gare, METZ, F-57000</adresse>
             </ClientBanqueXML>
         </listeClient>
-    </AgenceXML>
-    <AgenceXML>
-        <idAgence>2</idAgence>
-        <Nom>Metz quartier Gare</Nom>
-		<Adresse>France, Metz-ville, place de la Gare (entrepôt unique)</Adresse>
 	</AgenceXML>
 </AgencesXML>
