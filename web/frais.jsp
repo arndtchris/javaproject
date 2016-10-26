@@ -33,7 +33,6 @@
                     <div class="Client">
                         <h3>${f.typecoffre}</h3>
                         <p>${f.periodeLocation} : ${f.prixPeriode} ${f.devise} </p>
-                        <p>id : ${f.idFrais} </p>
                         <div>
                             <c:set var="editURL">
                                 <c:url value="frais">

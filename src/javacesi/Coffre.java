@@ -8,7 +8,6 @@ public class Coffre implements ICrud
     private int idCoffre;
     private String typeCoffre;
     private ClientBanque client;
-    private List<Operation> operations = new ArrayList<Operation>();
 
     private String dateOuverture;
     private String dateFermeture;
@@ -18,12 +17,11 @@ public class Coffre implements ICrud
 
     //constructeurs
 
-    public Coffre(int id, String typec, ClientBanque cl, List<Operation> lesOperations)
+    public Coffre(int id, String typec, ClientBanque cl)
     {
         this.idCoffre = id;
         this.typeCoffre = typec;
         this.client = cl;
-        this.operations = lesOperations;
     }
 
     public Coffre(String id,String dateOuverture, String dateFermeture, String contenu )
@@ -64,10 +62,6 @@ public class Coffre implements ICrud
         return this.client;
     }
 
-    public List<Operation> getOperations()
-    {
-        return this.operations;
-    }
 
     //setter
 
@@ -86,31 +80,9 @@ public class Coffre implements ICrud
         this.client = iClient;
     }
 
-    public void setOperation(Operation ope)
-    {
-        this.operations.add(ope);
-    }
 
     //Methodes
 
-    public void afficheOperations()
-    {
-        System.out.println("Liste des opérations du coffre n°" + this.idCoffre);
-        if(this.getOperations() != null && this.getOperations().size() > 0)
-        {
-            for(Operation operation : this.getOperations())
-            {
-                System.out.println("    "+operation.getTypeOp()
-                        +" effectué par "+ operation.getClt().getPrenom()+" "+operation.getClt().getNom()
-                        +", début : " + operation.getDebut()
-                        + ", fin " + operation.getFin());
-            }
-        }else
-        {
-            System.out.println("Aucune opération");
-        }
-
-    }
 
     public void afficheCoffre()
     {
