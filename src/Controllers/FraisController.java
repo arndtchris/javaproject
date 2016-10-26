@@ -2,7 +2,7 @@ package Controllers;
 
 import javacesi.*;
 
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by chris on 25/10/2016.
  */
 @WebServlet(name = "FraisController")
-public class FraisController extends HttpServlet {
+public class FraisController extends HttpServlet implements Filter {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String typecoffre = request.getParameter("typecoffre");
@@ -71,5 +71,30 @@ public class FraisController extends HttpServlet {
 
 
         request.getRequestDispatcher("frais.jsp").forward(request, response);
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        String url = request.getServletPath();
+        String fraisID = "";
+
+        String relativeWebPath = "outputs/Cataloguefrais2016.xml";
+        String absoluteDiskPath = servletRequest.getServletContext().getRealPath(relativeWebPath);
+
+        if( url.toLowerCase().contains("/supprimerFrais".toLowerCase()) ){
+            fraisID = request.getParameter("fraisID");
+        }
+
+        new Parse().supprimeFrais(absoluteDiskPath,fraisID);
+
+        response.sendRedirect("/frais");
     }
 }
