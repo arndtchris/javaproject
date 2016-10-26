@@ -41,12 +41,17 @@ public final class ConnexionForm {
         } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
+        utilisateur.setNom(nom);
+        utilisateur.setPrenom(prenom);
 
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
+            resultat = "<font color = 'green'> Succès de la connexion. </font>" +
+                    " <script type='text/javascript'>" +
+                    "            window.location.href = '/frais'" +
+                    "        </script>";
         } else {
-            resultat = "Échec de la connexion.";
+            resultat = "<font color = 'red'>Échec de la connexion. </font> ";
         }
 
         return utilisateur;
@@ -73,7 +78,7 @@ public final class ConnexionForm {
                 {
                     if (trouve == false)
                     {
-                        throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+                        throw new Exception( "<font color = 'red'>Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants</font>" );
                     }
                 }
                 else
@@ -83,12 +88,12 @@ public final class ConnexionForm {
             }
             if (trouve == false)
             {
-                throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+                throw new Exception( "<font color = 'red'>Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants</font>" );
             }
         }
         else
         {
-            throw new Exception( "Les champs sont obligatoires !" );
+            throw new Exception( "<font color = 'red'>Les champs sont obligatoires !</font>" );
 
         }
 

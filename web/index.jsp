@@ -13,9 +13,9 @@
 
         <form method="post" action="connexion">
             <fieldset>
-                <p>Vous pouvez vous connecter via ce formulaire.</p>
+                <p><h1>Vous pouvez vous connecter via ce formulaire.</h1></p>
 
-                <table>
+                <table align = center>
 
                 <tr>
                     <td>

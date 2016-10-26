@@ -90,22 +90,42 @@ public class Parse {
     public ArrayList<FraisXML> insertFrais(String fullPathToFile,FraisXML newFrais)
     {
         Integer newID = 0;
+        Boolean mustUpDate = false;
         ArrayList<FraisXML> lesFrais = this.parseFrais(fullPathToFile);
+
+        if(newFrais.IdOperation != null && newFrais.IdOperation != "")
+        {
+            mustUpDate = true;
+        }
 
         for(FraisXML fr : lesFrais)
         {
-            if(newID < Integer.parseInt(fr.IdOperation))
+            if(mustUpDate)
             {
-                newID = Integer.parseInt(fr.IdOperation);
+                if(fr.IdOperation.equals(newFrais.IdOperation))
+                {
+                    fr.PeriodeLocation = newFrais.PeriodeLocation;
+                    fr.Devise = newFrais.Devise;
+                    fr.PrixPeriode = newFrais.PrixPeriode;
+                    fr.TypeCoffre = newFrais.TypeCoffre;
+                }
+            }else
+            {
+                if(newID < Integer.parseInt(fr.IdOperation))
+                {
+                    newID = Integer.parseInt(fr.IdOperation);
+                }
             }
         }
 
-        newID += 1;
+        if(!mustUpDate)
+        {
+            newID += 1;
 
-        newFrais.IdOperation = newID.toString();
+            newFrais.IdOperation = newID.toString();
 
-        lesFrais.add(newFrais);
-
+            lesFrais.add(newFrais);
+        }
 
         try {
             FraisXMLs operas = new FraisXMLs();
@@ -160,6 +180,46 @@ public class Parse {
         }
 
         return lesOperations;
+    }
+
+    public Frais fraisById(String fullPathToFile, String id)
+    {
+        File file = new File(fullPathToFile);
+        FraisXML fraisToReturn = new FraisXML();
+
+        try
+        {
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("FraisXML");
+
+            JAXBContext jc = JAXBContext.newInstance(FraisXML.class);
+
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for(int i = 0; i < nodes.getLength(); i++)
+            {
+                JAXBElement<FraisXML> je = unmarshaller.unmarshal(nodes.item(i), FraisXML.class);
+                FraisXML op = je.getValue();
+                if(op.IdOperation.toString().equals(id))
+                {
+                    fraisToReturn = op;
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+
+        return new Frais(fraisToReturn);
     }
 
 
