@@ -1,10 +1,10 @@
 package javacesi;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.servlet.ServletContext;
 import javax.xml.bind.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,7 +17,6 @@ import java.util.Iterator;
  * Created by chris on 04/10/2016.
  */
 public class Parse {
-    private ServletContext servletContext;
 
     public Parse()
     {
