@@ -71,7 +71,7 @@ public final class ConnexionForm {
             {
                 if (!(nom.equals(clientxml.get(i).getNom())) && !(prenom.equals(clientxml.get(i).getPrenom())))
                 {
-                    if ((trouve == false)&&(i==clientxml.size()))
+                    if (trouve == false)
                     {
                         throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
                     }
@@ -81,10 +81,15 @@ public final class ConnexionForm {
                     trouve = true;
                 }
             }
+            if (trouve == false)
+            {
+                throw new Exception( "Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants" );
+            }
         }
         else
         {
             throw new Exception( "Les champs sont obligatoires !" );
+
         }
 
     }
