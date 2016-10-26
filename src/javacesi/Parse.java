@@ -344,19 +344,13 @@ public class Parse {
     {
 
         ArrayList<FraisXML> lesFrais = this.parseFrais(fullPathToFile);
-        Integer fraisToRemove = 0;
 
-        for (int j = 0; j < lesFrais.size(); j++) {
-
-            if(lesFrais.get(j).IdOperation.equals(fraisID))
-            {
-                Iterator<FraisXML> inter = new
-                fraisToRemove = j;
+        for (Iterator<FraisXML> iter = lesFrais.listIterator(); iter.hasNext(); ) {
+            FraisXML a = iter.next();
+            if (a.IdOperation.equals(fraisID)) {
+                iter.remove();
             }
-
         }
-        lesFrais.remove(fraisToRemove);
-
 
         try {
             FraisXMLs operas = new FraisXMLs();
