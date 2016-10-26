@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public final class ConnexionForm {
@@ -37,19 +38,24 @@ public final class ConnexionForm {
 
         /* Validation du champ nom. */
         try {
-            validationNom( nom, prenom, absoluteDiskPath );
+
+            validationNom( nom, prenom, absoluteDiskPath);
         } catch ( Exception e ) {
             setErreur( CHAMP_NOM, e.getMessage() );
         }
+
         utilisateur.setNom(nom);
         utilisateur.setPrenom(prenom);
+        int id = 0;
+        id = recupId(nom, prenom, absoluteDiskPath, id);
+        utilisateur.setIdClient(id);
 
         /* Initialisation du résultat global de la validation. */
         if ( erreurs.isEmpty() ) {
             resultat = "<font color = 'green'> Succès de la connexion. " +
                     " <br /> Redirection en cours ...</font>" +
                     " <script type='text/javascript'>" +
-                    "            window.location.href = '/frais'" +
+                    "            window.location.href = '/moncompte.jsp'" +
                     "        </script>";
         } else {
             resultat = "<font color = 'red'>Échec de la connexion. </font> ";
@@ -61,7 +67,7 @@ public final class ConnexionForm {
     /**
      * Valide le nom et prénom saisis.
      */
-    private void validationNom( String nom, String prenom, String abs ) throws Exception {
+    public void validationNom( String nom, String prenom, String abs) throws Exception {
         if ((nom != null) && (prenom != null))
         {
 
@@ -82,7 +88,7 @@ public final class ConnexionForm {
                         throw new Exception( "<font color = 'red'>Nom/Prénom incorrects, merci de saisir à nouveau vos identifiants</font>" );
                     }
                 }
-                else
+                else if ((nom.equals(clientxml.get(i).getNom())) && (prenom.equals(clientxml.get(i).getPrenom())))
                 {
                     trouve = true;
                 }
@@ -101,7 +107,6 @@ public final class ConnexionForm {
     }
 
 
-
     /*
      * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */
@@ -109,6 +114,32 @@ public final class ConnexionForm {
         erreurs.put( champ, message );
     }
 
+    public Integer recupId (String nom, String prenom, String abs, int id)
+    {
+        if ((nom != null) && (prenom != null))
+        {
+
+            ArrayList<Agence> agxml = new Parse().parseAgence(abs);
+
+            ArrayList<ClientBanque> clientxml = new ArrayList<ClientBanque>();
+            for(int j = 0; j<agxml.size(); j++)
+            {
+                clientxml.addAll(agxml.get(j).getClients());
+            }
+
+            for(int i = 0; i< clientxml.size(); i++)
+            {
+                if ((nom.equals(clientxml.get(i).getNom())) && (prenom.equals(clientxml.get(i).getPrenom())))
+                {
+                    id = clientxml.get(i).getIdClient();
+
+                }
+            }
+
+
+    }
+        return id;
+    }
     /*
      * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
      * sinon.
