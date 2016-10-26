@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by chris on 04/10/2016.
@@ -440,6 +441,7 @@ public class Parse {
                 CoffreXML co = je.getValue();
                 if(co.idCoffre.equals(id))
                 {
+                    coffre.setIdCoffre(Integer.parseInt(co.idCoffre));
                     coffre.setPiece(co.piece);
                     coffre.setTypeCoffre(co.typeCoffre);
                     coffre.setContenu(co.contenu);
@@ -463,48 +465,70 @@ public class Parse {
         return coffre;
     }
 
+    public void deleteCoffre(String fullPathToFile, String id)
+    {
+        File file = new File(fullPathToFile);
 
-    /*public void operationsToXML(ArrayList<OperationXML> lesOperations) {
+        ArrayList<AgenceXML> lesAgences = new ArrayList<>();
+        //ArrayList<Agence> agences = new ArrayList<Agence>();
+
         try {
-            FraisXMLs operas = new FraisXMLs();
-            JAXBContext jc2 = JAXBContext.newInstance(FraisXMLs.class);
-            Marshaller marshaller = jc2.createMarshaller();
+            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = db.parse(file);
+            NodeList nodes = doc.getElementsByTagName("AgenceXML");
 
-            //Constitu un fichier contenant autant de noeuds que d'objets contenu dans operas
-            operas.operations = lesOperations;
-            marshaller.marshal(operas, new File("assets/lesOperations.xml"));
+            JAXBContext jc = JAXBContext.newInstance(AgenceXML.class);
 
+            Unmarshaller unmarshaller = jc.createUnmarshaller();
+
+            for (int i = 0; i < nodes.getLength(); i++) {
+                JAXBElement<AgenceXML> je = unmarshaller.unmarshal(nodes.item(i), AgenceXML.class);
+                AgenceXML ag = je.getValue();
+                lesAgences.add(ag);
+            }
+
+            for (AgenceXML agenceXML: lesAgences) {
+                if(agenceXML.listeClient != null){
+                    if(agenceXML.listeClient != null){
+                        for(ClientBanqueXML clientXML : agenceXML.listeClient)
+                        {
+                            if(clientXML.Coffres != null)
+                            {
+                                for (Iterator<CoffreXML> iter = clientXML.Coffres.listIterator(); iter.hasNext(); ) {
+                                    CoffreXML a = iter.next();
+                                    if (a.idCoffre.equals(id)) {
+                                        iter.remove();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (JAXBException e) {
             e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
         }
-    }*/
 
-    public void parseCoffres() {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Coffre.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Coffre coffre = (Coffre) jaxbUnmarshaller.unmarshal(new File("assets/coffres.xml"));
+            AgencesXML agences = new AgencesXML();
+            JAXBContext jc2 = JAXBContext.newInstance(AgencesXML.class);
+            Marshaller marshaller = jc2.createMarshaller();
+
+            agences.agences = lesAgences;
+            marshaller.marshal(agences, new File(fullPathToFile));
 
         } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
 
-    /*private static void jaxbObjectToXML(OperationXML emp, int i) {
-
-        try {
-            JAXBContext context = JAXBContext.newInstance(OperationXML.class);
-            Marshaller m = context.createMarshaller();
-            //for pretty-print XML in JAXB
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-            // Write to System.out for debugging
-            // m.marshal(emp, System.out);
-
-            // Write to File
-            m.marshal(emp, new File("assets/Operation"+i+".xml"));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }*/
 }

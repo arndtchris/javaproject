@@ -18,7 +18,7 @@
                           <h3>${client.prenom} ${client.nom}</h3>
                           <p>${client.adresse}</p>
                           <ul class="ClientCoffre">
-                              <li> + <a href="${pageContext.request.contextPath}/ajoutCoffre/${client.idClient}">Ajouter un coffre</a></li>
+                              <li> + <a href="${pageContext.request.contextPath}/ajoutCoffre/${client.idClient}">Ajouter une réservation</a></li>
                               <c:forEach items="${client.coffres}" var="coffre">
                                   <li><a href="${pageContext.request.contextPath}/coffre/${coffre.idCoffre}">${coffre.typeCoffre}</a></li>
                               </c:forEach>

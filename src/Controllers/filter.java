@@ -59,7 +59,11 @@ public class filter implements Filter {
 
         if( url.toLowerCase().contains("/supprimerCoffre".toLowerCase()) ){
             String id = url.replace("/supprimerCoffre/","");
-            //Dostuff
+            String relativeWebPath = "outputs/banque.xml";
+            String absoluteDiskPath = req.getServletContext().getRealPath(relativeWebPath);
+            new Parse().deleteCoffre(absoluteDiskPath,id);
+            response.sendRedirect("/afficheAgences");
+            return;
         }
 
         chain.doFilter(req, res);

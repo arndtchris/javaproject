@@ -13,6 +13,7 @@
                         <p>Localisation : ${coffre.piece}</p>
                         <p>Début de réservation : ${coffre.dateOuverture}</p>
                         <p>Fin de réservation : ${coffre.dateFermeture}</p>
+                        <a class="btn btn-warning fa fa-trash" href="${pageContext.request.contextPath}/supprimerCoffre/${coffre.idCoffre}" role="button"> Supprimer</a>
                     </div>
                 </div>
             </div>
