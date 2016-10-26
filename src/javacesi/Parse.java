@@ -61,9 +61,9 @@ public class Parse {
                             for (CoffreXML coffreXML : clientXML.Coffres){
                                 Coffre coffre = new Coffre();
                                 coffre.setIdCoffre(Integer.parseInt(coffreXML.idCoffre));
-                                coffre.setObjets(coffreXML.contenu);
+                                coffre.setContenu(coffreXML.contenu);
                                 coffre.setTypeCoffre(coffreXML.typeCoffre);
-                                coffre.setLocalisation(coffreXML.piece);
+                                coffre.setPiece(coffreXML.piece);
                                 client.addCoffre(coffre);
                             }
                         }

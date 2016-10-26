@@ -57,23 +57,16 @@ public class CoffreController extends HttpServlet {
     }
 
     public void enregistreCoffre(HttpServletRequest req, HttpServletResponse resp, int id_client) throws ServletException, IOException {
+        CoffreXML c = new CoffreXML();
+        c.typeCoffre = req.getParameter("TypeCoffre") ;
+        c.piece = req.getParameter("Piece");
+        c.contenu = req.getParameter("Contenu");
+        c.dateOuverture = req.getParameter("Debut");
+        c.dateFermeture = req.getParameter("Fin");
+
         String relativeWebPath = "outputs/banque.xml";
         String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
         ArrayList<Agence> ag = new Parse().parseAgence(absoluteDiskPath);
-
-        for (Agence agence : ag) {
-            for (ClientBanque client : agence.getClients()) {
-                if(client.getIdClient() == id_client)
-                {
-                    Coffre c = new Coffre();
-                    c.setTypeCoffre(req.getParameter("TypeCoffre"));
-                    c.setLocalisation(req.getParameter("Localisation"));
-                    c.setTypeSecurite(req.getParameter("TypeSecurite"));
-                    req.getParameter("Default");
-                    client.addCoffre(c);
-                }
-            }
-        }
         req.setAttribute("agences", ag);
         req.setAttribute("title", "Liste des coffres");
         req.getRequestDispatcher("agences.jsp").forward(req, resp);

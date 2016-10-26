@@ -11,8 +11,8 @@
                     <div class="col-lg-3">
                         <div class="Coffre">
                             <h3>${coffre.typeCoffre}</h3>
-                            <p>Contenu : ${coffre.objets}</p>
-                            <p>Localisation : ${coffre.localisation}</p>
+                            <p>Contenu : ${coffre.contenu}</p>
+                            <p>Localisation : ${coffre.piece}</p>
                         </div>
                     </div>
                 </c:forEach>

@@ -18,14 +18,26 @@
         </div>
 
         <div class="row">
-            <label for="Localisation" class="col-lg-6">Localisation</label>
-            <input id="Localisation" type="text" class="col-lg-6" name="Localisation">
+            <label for="Piece" class="col-lg-6">Pièce</label>
+            <input id="Piece" type="text" class="col-lg-6" name="Piece">
             <div class="clr"></div>
         </div>
 
         <div class="row">
-            <label for="Default" class="col-lg-6">Indiquer comme coffre par défaut</label>
-            <input id="Default" type="checkbox" class="col-lg-6" name="Default">
+            <label for="Contenu" class="col-lg-6">Contenu</label>
+            <input id="Contenu" type="text" class="col-lg-6" name="Contenu">
+            <div class="clr"></div>
+        </div>
+
+        <div class="row">
+            <label for="Debut" class="col-lg-6">Début de réservation</label>
+            <input id="Debut" type="text" class="col-lg-6" name="Debut">
+            <div class="clr"></div>
+        </div>
+
+        <div class="row">
+            <label for="Fin" class="col-lg-6">Fin de réservation</label>
+            <input id="Fin" type="text" class="col-lg-6" name="Fin">
             <div class="clr"></div>
         </div>
 

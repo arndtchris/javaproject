@@ -7,9 +7,18 @@
 <head>
     <title>${title}</title>
 
+    <link rel="stylesheet" href="../../css/jquery-ui.min.css" type="text/css" media="screen">
     <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+    <script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#Fin, #Debut").datepicker();
+        });
+    </script>
 </head>
 <body>
 

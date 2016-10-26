@@ -34,20 +34,6 @@ public class ClientBanque extends Individu
         this.coffres = new ArrayList<Coffre>();
 	}
 
-    public Coffre getCoffreParDefaut()
-    {
-        Coffre coffreToReturn = new Coffre();
-        for(Coffre c : this.coffres)
-        {
-            if(c.isCoffreParDefault())
-            {
-                coffreToReturn = c;
-            }
-        }
-
-        return coffreToReturn;
-    }
-
     public void addCoffre(Coffre c)
     {
         this.coffres.add(c);
