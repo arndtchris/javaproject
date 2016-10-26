@@ -489,16 +489,14 @@ public class Parse {
 
             for (AgenceXML agenceXML: lesAgences) {
                 if(agenceXML.listeClient != null){
-                    if(agenceXML.listeClient != null){
-                        for(ClientBanqueXML clientXML : agenceXML.listeClient)
+                    for(ClientBanqueXML clientXML : agenceXML.listeClient)
+                    {
+                        if(clientXML.Coffres != null)
                         {
-                            if(clientXML.Coffres != null)
-                            {
-                                for (Iterator<CoffreXML> iter = clientXML.Coffres.listIterator(); iter.hasNext(); ) {
-                                    CoffreXML a = iter.next();
-                                    if (a.idCoffre.equals(id)) {
-                                        iter.remove();
-                                    }
+                            for (Iterator<CoffreXML> iter = clientXML.Coffres.listIterator(); iter.hasNext(); ) {
+                                CoffreXML a = iter.next();
+                                if (a.idCoffre.equals(id)) {
+                                    iter.remove();
                                 }
                             }
                         }
