@@ -53,14 +53,14 @@ public class Parse {
                     for(ClientBanqueXML clientXML : agenceXML.listeClient)
                     {
                         ClientBanque client = new ClientBanque();
-                        client.setIdClient(clientXML.idClient);
+                        client.setIdClient(Integer.parseInt(clientXML.idClient));
                         client.setAdresse(clientXML.adresse);
                         client.setNom(clientXML.nom);
                         client.setPrenom(clientXML.prenom);
                         if(clientXML.Coffres != null){
                             for (CoffreXML coffreXML : clientXML.Coffres){
                                 Coffre coffre = new Coffre();
-                                coffre.setIdCoffre(coffreXML.idCoffre);
+                                coffre.setIdCoffre(Integer.parseInt(coffreXML.idCoffre));
                                 coffre.setObjets(coffreXML.contenu);
                                 coffre.setTypeCoffre(coffreXML.typeCoffre);
                                 client.addCoffre(coffre);

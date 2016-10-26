@@ -51,6 +51,15 @@ public class Coffre implements ICrud
     public Coffre(CoffreXML c)
     {
         idCoffre = Integer.parseInt(c.idCoffre);
+        typeCoffre = c.typeCoffre;
+        dateFermeture = c.dateFermeture;
+        dateOuverture = c.dateOuverture;
+        contenu = c.contenu;
+    }
+
+    public Coffre()
+    {
+
     }
 
     //getter
